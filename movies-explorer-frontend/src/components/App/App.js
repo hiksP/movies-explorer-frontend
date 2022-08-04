@@ -1,12 +1,11 @@
 import React from "react";
-import Header from "../Header/Header";
-import Profile from "../Profile/Profile";
-import Welcome from "../Welcome/Welcome";
+import Login from "../Login/Login";
+
 
 export default function App() {
     return(
         <div className="page">
-          <Profile></Profile>
+          <Login></Login>
         </div>
     );
 
