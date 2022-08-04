@@ -1,10 +1,11 @@
 import React from "react";
 import Header from "../Header/Header";
+import Welcome from "../Welcome/Welcome";
 
 export default function Profile() {
     return(
         <>
-            <Header></Header>
+            <Welcome></Welcome>
             <div className="profile">
                 <h1 className="profile__title">Привет, Петр</h1>
                 <form className="profile__form">
