@@ -1,8 +1,8 @@
-@import url(../../blocks/Profile/profile.css);
-@import url(../../blocks/Profile/__title/profile__title.css);
-@import url(../../blocks/Profile/__form/profile__form.css);
-@import url(../../blocks/Profile/__list/profile__list.css);
-@import url(../../blocks/Profile/__text/profile__text.css);
-@import url(../../blocks/Profile/__input/profile__input.css);
-@import url(../../blocks/Profile/__button/profile__button.css);
-@import url(../../blocks/Profile/__button/_exit/profile__button_exit.css);
+@import url(../../blocks/profile/profile.css);
+@import url(../../blocks/profile/__title/profile__title.css);
+@import url(../../blocks/profile/__form/profile__form.css);
+@import url(../../blocks/profile/__list/profile__list.css);
+@import url(../../blocks/profile/__text/profile__text.css);
+@import url(../../blocks/profile/__input/profile__input.css);
+@import url(../../blocks/profile/__button/profile__button.css);
+@import url(../../blocks/profile/__button/_exit/profile__button_exit.css);

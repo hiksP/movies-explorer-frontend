@@ -1,7 +1,7 @@
-@import url(../../blocks/Header/Header.css);
-@import url(../../blocks/Header/__column/header__column.css);
-@import url(../../blocks/Header/__list/header__list.css);
-@import url(../../blocks/Header/__logo/header__logo.css);
-@import url(../../blocks/Header/__list-element/header__list-element.css);
-@import url(../../blocks//Header/__list-container/header__list-container.css);
-@import url(../../blocks/Header/__profile-icon/header__profile-icon.css);
+@import url(../../blocks/header/Header.css);
+@import url(../../blocks/header/__column/header__column.css);
+@import url(../../blocks/header/__list/header__list.css);
+@import url(../../blocks/header/__logo/header__logo.css);
+@import url(../../blocks/header/__list-element/header__list-element.css);
+@import url(../../blocks/header/__list-container/header__list-container.css);
+@import url(../../blocks/header/__profile-icon/header__profile-icon.css);

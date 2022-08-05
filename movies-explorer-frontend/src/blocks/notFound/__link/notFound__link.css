@@ -1,0 +1,13 @@
+.notFound__link {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 16px;
+    color: #3456F3;
+    margin: 0 auto;
+    padding: 0 0 60px;
+    text-decoration: none;   
+}
+
+.notFound__link:hover{
+    cursor: pointer;
+}
