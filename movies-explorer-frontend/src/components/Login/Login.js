@@ -4,7 +4,7 @@ import Welcome from "../Welcome/Welcome";
 export default function Login() {
     return (
         <> 
-            <Welcome></Welcome>
+            <Welcome text={'Рады видеть'}/>
             <div className="login">
                 <form className="login__form">
                     <ul className="login__list">
