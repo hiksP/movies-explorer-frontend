@@ -1,9 +1,9 @@
-.Header {
+.header {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 70px 0;
   justify-content: space-between;
-  width: 95%;
+  width: calc(100% - 140px);
   height: 74px;
 }

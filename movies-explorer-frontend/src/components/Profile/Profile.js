@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 export default function Profile() {
     return(
         <>
-            <Header></Header>
+            <Header main={false}/>
             <div className="profile">
                 <h1 className="profile__title">Привет, Петр</h1>
                 <form className="profile__form">

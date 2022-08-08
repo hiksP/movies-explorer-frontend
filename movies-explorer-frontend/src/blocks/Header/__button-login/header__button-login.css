@@ -1,0 +1,15 @@
+.header__button-login {
+  width: 76px;
+  height: 32px;
+  background-color: #3456F3;
+  border: 2px solid #3456F3;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.header__button-login:hover {
+  cursor: pointer;
+}

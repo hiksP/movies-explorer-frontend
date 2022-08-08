@@ -5,7 +5,7 @@ import Header from "../../Header/Header"
 export default function Promo() {
     return (
         <>
-            <Header/>
+            <Header main={true}/>
             <div className="promo">
                 <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
             </div>
