@@ -1,0 +1,9 @@
+.navTab {
+  background-color: #F5F5F5;
+  display: flex;
+  margin: 0 auto;
+  padding: 10px 0 0;
+  justify-content: center;
+  height: 76px;
+  align-items: center;
+}

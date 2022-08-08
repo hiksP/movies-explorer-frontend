@@ -1,0 +1,6 @@
+.aboutProject__duration-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    padding-bottom: 110px;
+}

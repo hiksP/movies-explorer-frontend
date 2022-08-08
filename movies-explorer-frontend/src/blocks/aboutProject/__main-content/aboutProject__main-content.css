@@ -1,0 +1,6 @@
+.aboutProject__main-content {
+    margin: 0 auto 110px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}

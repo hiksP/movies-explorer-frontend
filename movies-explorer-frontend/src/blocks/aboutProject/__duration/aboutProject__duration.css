@@ -1,0 +1,12 @@
+.aboutProject__duration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: #F2F2F2;
+    color: black;
+    border: solid 2px #F2F2F2;
+    width: 920px;
+    height: 40px;
+}
