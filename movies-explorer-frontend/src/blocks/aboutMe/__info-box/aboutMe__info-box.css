@@ -1,0 +1,6 @@
+.aboutMe__info-box {
+    display: flex;
+    flex-direction: column;
+    max-width: 620px;
+    align-items: flex-start;
+}
