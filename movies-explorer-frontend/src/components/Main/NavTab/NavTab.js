@@ -1,6 +1,6 @@
 import React from "react";
 
-export function NavTab() {
+export default function NavTab() {
     return (
         <div className="navTab">
             <a href="#" className="navTab__link">О проекте</a>

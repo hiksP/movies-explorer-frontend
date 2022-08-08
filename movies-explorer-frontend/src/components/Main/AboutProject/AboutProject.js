@@ -1,6 +1,6 @@
 import React from "react";
 
-export function AboutProject() {
+export default function AboutProject() {
     return (
         <div className="aboutProject">
             <h2 className="aboutProject__title">О проекте</h2>
