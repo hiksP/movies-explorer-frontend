@@ -1,0 +1,12 @@
+.footer__project-text {
+    margin: 80px auto 20px;
+    padding: 0 0 20px 0;
+    color: #A0A0A0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    width: 100%;
+    border-bottom: #E8E8E8 1px solid;
+    display: flex;
+    justify-content: center;
+}

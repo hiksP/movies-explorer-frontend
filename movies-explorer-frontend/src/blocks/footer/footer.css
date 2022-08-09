@@ -1,0 +1,8 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F8F8F8;
+    max-width: calc(100% - 360px);
+    padding: 0 180px 20px;
+}

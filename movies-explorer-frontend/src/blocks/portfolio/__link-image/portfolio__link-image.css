@@ -1,0 +1,9 @@
+.portfolio__link-image {
+    background: url(../../../images/portfolio-button.svg) no-repeat center;
+    width: 30px;
+    height: 60px;
+}
+
+.portfolio__link-image:hover {
+    cursor: pointer;
+}
