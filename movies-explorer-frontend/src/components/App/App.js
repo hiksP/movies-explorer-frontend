@@ -6,14 +6,14 @@ import Promo from "../Main/Promo/Promo";
 import Profile from "../Profile/Profile";
 import { Main } from "../Main/Main";
 import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm";
+import SearchForm from "../Movies/SearchForm/SearchForm";
+import Movies from "../Movies/Movies";
 
 
 export default function App() {
     return(
         <div className="page">
-          <Header></Header>
-          <SearchForm></SearchForm>
+          <Movies></Movies>
         </div>
     );
 
