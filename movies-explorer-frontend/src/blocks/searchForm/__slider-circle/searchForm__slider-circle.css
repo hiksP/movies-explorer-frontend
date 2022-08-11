@@ -1,0 +1,8 @@
+.searchForm__slider-circle {
+    width: 8px;
+    height: 8px;
+    margin: 0 22px 0 6px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: white;
+}

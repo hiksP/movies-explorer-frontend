@@ -8,7 +8,7 @@ import AboutMe from "./AboutMe/AboutMe";
 import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
 
-export function Main() {
+export default function Main() {
     return (
         <>
             <Header main={true}/>
