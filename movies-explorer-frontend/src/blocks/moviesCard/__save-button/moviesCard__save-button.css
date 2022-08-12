@@ -6,4 +6,10 @@
     margin: 0;
     background: #F4F4F4 url(../../../images/savedIcon.svg) no-repeat center;
     border: 1px solid #F4F4F4;
+    transition: .4s ease-in opacity;
+}
+
+.moviesCard__save-button:hover {
+    cursor: pointer;
+    opacity: .4;
 }

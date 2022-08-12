@@ -17,7 +17,7 @@ export default function SearchForm() {
             <div className="searchForm__container">
             <img src={search} alt="лупа" className="searchForm__input-icon"></img>
                 <form className="searchForm__form">
-                    <input className="searchForm__input"></input>
+                    <input placeholder="Фильм" className="searchForm__input" type="text"></input>
                     <button className="searchForm__search-button"></button>
                 </form>
                 <button onClick={sliderButton} className={isSliderActive ? `searchForm__slider searchForm__slider_active` : `searchForm__slider`}>

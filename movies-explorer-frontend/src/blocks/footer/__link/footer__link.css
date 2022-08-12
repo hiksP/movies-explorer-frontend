@@ -6,8 +6,10 @@
     padding: 0;
     margin: 0;
     text-decoration: none;
+    transition: .4s ease-in opacity;
 }
 
 .footer__link:hover {
     cursor: pointer;
+    opacity: .4;
 }

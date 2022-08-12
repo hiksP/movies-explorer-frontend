@@ -5,4 +5,10 @@
     padding: 0;
     margin-bottom: 40px;
     margin-right: auto;
+    transition: .4s ease-in opacity;
+}
+
+.welcome__logo:hover {
+    cursor: pointer;
+    opacity: .4;
 }

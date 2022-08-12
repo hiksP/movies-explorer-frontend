@@ -3,7 +3,7 @@ import React from "react";
 export default function AboutProject() {
     return (
         <div className="aboutProject">
-            <h2 className="aboutProject__title">О проекте</h2>
+            <h2 className="aboutProject__title"><a name="about">О проекте</a></h2>
             <div className="aboutProject__main-content">
                 <div className="aboutProject__container">
                     <p className="aboutProject__text-big">Дипломный проект включал 5 этапов</p>

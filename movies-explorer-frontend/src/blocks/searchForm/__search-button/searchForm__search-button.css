@@ -6,4 +6,10 @@
     border: #3456F3 solid 1px;
     border-radius: 48px;
     background: #3456F3 url(../../../images/slider-icon.png) center no-repeat;
+    transition: .4s ease-in opacity;
+}
+
+.searchForm__search-button:hover {
+    cursor: pointer;
+    opacity: .4;
 }

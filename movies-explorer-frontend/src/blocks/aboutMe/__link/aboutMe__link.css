@@ -6,6 +6,7 @@
     text-decoration: none;
     padding: 0;
     margin: 0 20px 0 0;
+    transition: .4s ease-in opacity;
 }
 
 .aboutMe__link:last-of-type {
@@ -14,4 +15,5 @@
 
 .aboutMe__link:hover {
     cursor: pointer;
+    opacity: .4;
 }

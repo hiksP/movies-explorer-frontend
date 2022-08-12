@@ -1,5 +1,6 @@
 import React from "react";
 import Welcome from "../Welcome/Welcome";
+import { Link, Route, Routes } from "react-router-dom";
 
 export default function Login() {
     return (
@@ -9,14 +10,14 @@ export default function Login() {
                 <form className="login__form">
                     <ul className="login__list">
                         <p className="login__input-text">Email</p>
-                        <input className="login__input"></input>
+                        <input className="login__input" required type="email"></input>
                         <p className="login__input-text">Пароль </p>
-                        <input className="login__input"></input>
+                        <input className="login__input" required type="text"></input>
                     </ul>
-                    <button className="login__button">Войти</button>
+                    <button className="login__button" type="submit">Войти</button>
                 </form>
                 <p className="login__text">Еще не зарегестрированы?
-                    <a href="#" className="login__link">Регистрация</a>
+                    <Link to={'/signup'} className="login__link">Регистрация</Link>
                 </p>
             </div>
         </>

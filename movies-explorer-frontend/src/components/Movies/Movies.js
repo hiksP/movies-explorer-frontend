@@ -11,7 +11,7 @@ export default function Movies() {
         <>
             <Header></Header>
             <SearchForm></SearchForm>
-            <MoviesCardList></MoviesCardList>
+            <MoviesCardList savedMovies={false}></MoviesCardList>
             <Preloader></Preloader>
             <Footer></Footer>
         </>

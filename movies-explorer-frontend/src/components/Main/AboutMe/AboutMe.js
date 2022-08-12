@@ -4,7 +4,7 @@ import photo from "../../../images/photo.jpg"
 export default function AboutMe() {
     return (
         <div className="aboutMe">
-            <h2 className="aboutMe__title">Студент</h2>
+            <h2 className="aboutMe__title"><a name="student">Студент</a></h2>
             <div className="aboutMe__container">
                 <div className="aboutMe__info-box">
                     <h3 className="aboutMe__name">Петр</h3>

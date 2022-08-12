@@ -2,8 +2,10 @@
     background: url(../../../images/portfolio-button.svg) no-repeat center;
     width: 30px;
     height: 60px;
+    transition: .4s ease-in opacity;
 }
 
 .portfolio__link-image:hover {
     cursor: pointer;
+    opacity: .4;
 }

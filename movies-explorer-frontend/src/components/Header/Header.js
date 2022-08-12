@@ -1,32 +1,34 @@
 import React from "react";
 import logo from "../../images/logo.svg";
 import icon from "../../images/profile_icon.svg";
+import { Link, Route, Routes } from "react-router-dom";
 
 export default function Header({main}) {
+
     return main ? (
         <div className="header header_main">
             <div className="header__column">
-                <img className="header__logo" src={logo} alt="Логотип"/>
+                <Link className="header__link" to={'/'}><img className="header__logo" src={logo} alt="Логотип"/></Link>
             </div>
             <div className="header__column">
                 <li className="header__list">
-                    <a href="#" className="header__button-register">Регистрация</a>
-                    <button className="header__button-login">Войти</button>
+                    <Link className="header__button-register" to={'/signup'}>Регистрация</Link>
+                    <Link className="header__link" to={'/signin'}> <button className="header__button-login">Войти</button> </Link>
                 </li>
             </div>
         </div>
     ) : (
         <div className="header">
         <div className="header__column">
-            <img className="header__logo" src={logo} alt="Логотип"/>
+            <Link className="header__link" to={'/'}><img className="header__logo" src={logo} alt="Логотип"/></Link>
             <li className="header__list">
-                <ul className="header__list-element">Фильмы</ul>
-                <ul className="header__list-element">Сохранненые фильмы</ul>
+                <Link className="header__link" to={'/movies'}><ul className="header__list-element">Фильмы</ul></Link>
+                <Link className="header__link" to={'/saved-movies'}><ul className="header__list-element">Сохранненые фильмы</ul></Link>
             </li>
         </div>
         <div className="header__column">
             <li className="header__list">
-                <ul className="header__list-element">Аккаунт</ul>
+                <Link className="header__link" to={'/profile'}><ul className="header__list-element">Аккаунт</ul></Link>
                 <ul className="header__list-container">
                     <img className="header__profile-icon" src={icon} alt="Иконка"/>
                 </ul>

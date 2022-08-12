@@ -1,13 +1,12 @@
-.portfolio__text {
-    color: black;
-    font-size: 30px;
-    line-height: 50px;
+.header__link {
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    color: inherit;
     transition: .4s ease-in opacity;
 }
 
-.portfolio__text:hover {
+.header__link:hover {
     cursor: pointer;
     opacity: .4;
 }

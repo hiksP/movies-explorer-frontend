@@ -10,8 +10,10 @@
     line-height: 24px;
     margin: 0 auto 16px;
     padding: 0;
+    transition: .4s ease-in opacity;
 }
 
 .login__button:hover {
+    opacity: .4;
     cursor: pointer;
 }
