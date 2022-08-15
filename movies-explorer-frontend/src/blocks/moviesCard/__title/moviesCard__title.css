@@ -6,3 +6,9 @@
     padding: 0;
     color: black;
 }
+
+@media screen and (max-width: 1281px) {
+    .moviesCard__title {
+        font-size: 15px;
+    }
+}

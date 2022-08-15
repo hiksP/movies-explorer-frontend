@@ -5,3 +5,10 @@
     margin: 0;
     padding: 0;
 }
+
+@media screen and (max-width: 1281px) {
+    .searchForm__text {
+        font-size: 13px;
+        padding-right: 20px;
+    }
+}

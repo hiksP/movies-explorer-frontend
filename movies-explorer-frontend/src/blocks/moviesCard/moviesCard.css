@@ -7,3 +7,10 @@
     height: 270px;
     background-color: #FFFFFF;
 }
+
+@media screen and (max-width: 769px) {
+    .moviesCard {
+        width: 339px;
+        height: 258px;
+    }
+}

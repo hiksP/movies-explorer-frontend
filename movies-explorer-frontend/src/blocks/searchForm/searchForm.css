@@ -1,6 +1,15 @@
 .searchForm {
-    margin: 15px auto 0;
-    padding: 55px 0 55px 0;
+    margin: 10px auto 0;
+    padding: 75px 0 75px 0;
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 769px) {
+    .searchForm {
+        padding: 80px 0 110px 0;
+        max-width: 708px;
+        border-bottom: 1px solid #E8E8E8;
+        margin-bottom: 80px;
+    }
 }

@@ -7,5 +7,24 @@
     border-radius: 6px;
     font-weight: 500;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 16px;
+    transition: ease-in .4s opacity;
+}
+
+.preloader__button:hover {
+    opacity: .4;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1281px) {
+    .preloader__button {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .preloader__button {
+        max-width: calc(100% - 60px);
+    }
 }

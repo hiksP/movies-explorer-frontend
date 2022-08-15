@@ -6,3 +6,10 @@
     margin: 0;
     padding: 0;
 }
+
+@media screen and (max-width: 1281px) {
+    .moviesCard__duration {
+        font-size: 11px;
+        line-height: 13px;
+    }
+}

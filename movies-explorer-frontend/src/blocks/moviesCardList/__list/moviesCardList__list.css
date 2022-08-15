@@ -6,3 +6,16 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 30px 24px;
 }
+
+@media screen and (max-width: 1281px) {
+    .moviesCardList__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .moviesCardList__list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px 30px;
+    }
+}
