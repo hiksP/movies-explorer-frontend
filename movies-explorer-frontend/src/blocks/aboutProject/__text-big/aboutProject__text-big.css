@@ -5,3 +5,15 @@
     margin: 0 0 26px 0;
     padding: 0;
 }
+
+@media screen and (max-width: 1281px) {
+    .aboutProject__text-big {
+        margin: 0 0 14px 0;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .aboutProject__text-big {
+        margin:  0 0 22px 0;
+    }
+}

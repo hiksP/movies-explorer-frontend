@@ -5,3 +5,9 @@
     margin-bottom: 135px;
     padding: 0;
 }
+
+@media screen and (max-width: 769px) {
+    .portfolio__list {
+        margin-bottom: 90px;
+    }
+}

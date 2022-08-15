@@ -9,3 +9,15 @@
     color: black;
     border-bottom: 1px solid black;
 }
+
+@media screen and (max-width: 1281px) {
+    .aboutProject__title {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .aboutProject__title {
+        padding: 90px 0 23px;
+    }
+}

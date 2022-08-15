@@ -7,3 +7,17 @@
     margin: 0 auto 100px;
     padding: 0;
 }
+
+@media screen and (max-width: 1281px) {
+    .techs__text {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .techs__text {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 auto 80px;
+    }
+}

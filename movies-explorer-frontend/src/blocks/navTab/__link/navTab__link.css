@@ -18,3 +18,10 @@
 .navTab__link:last-of-type {
   margin: 0;
 }
+
+@media screen and (max-width: 1281px) {
+  .navTab__link {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}

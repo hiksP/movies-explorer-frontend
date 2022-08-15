@@ -3,6 +3,13 @@
     flex-direction: column;
     justify-content: center;
     background-color: #F8F8F8;
-    max-width: calc(100% - 360px);
-    padding: 0 180px 20px;
+    max-width: calc(100% -  140px);
+    padding: 0 70px 20px;
+}
+
+@media screen and (max-width: 769px) {
+    .footer {
+        max-width: calc(100% - 60px);
+        padding: 0 30px 20px;
+    }
 }

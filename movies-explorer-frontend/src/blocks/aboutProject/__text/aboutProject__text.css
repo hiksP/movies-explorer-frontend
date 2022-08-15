@@ -5,3 +5,10 @@
     margin: 0;
     padding: 0;
 }
+
+@media screen and(max-width: 769px) {
+    .aboutProject__text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}

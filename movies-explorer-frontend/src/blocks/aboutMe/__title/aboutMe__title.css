@@ -8,3 +8,15 @@
     color: black;
     border-bottom: 1px solid black;
 }
+
+@media screen and (max-width: 1281px) {
+    .aboutMe__title {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .aboutMe__title {
+        margin: 90px auto 65px;
+    }
+}

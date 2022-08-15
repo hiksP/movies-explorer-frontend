@@ -4,3 +4,15 @@
     border: solid 2px #3456F3;
     width: 230px;
 }
+
+@media screen and (max-width: 1281px) {
+    .aboutProject__duration_back {
+        width: 228px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .aboutProject__duration_back {
+        width: 120px;
+    }
+}

@@ -13,3 +13,9 @@
   opacity: .4;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1281px) {
+  .header__button-register {
+    font-size: 12px;
+  }
+}

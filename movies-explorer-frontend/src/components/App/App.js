@@ -11,12 +11,6 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 
 export default function App() {
 
-    const navigate = useNavigate()
-
-    const navigateFunction = (path) => {
-      navigate(`${path}`)
-    }
-
     return(
         <div className="page">
           <Routes>

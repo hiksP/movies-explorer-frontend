@@ -5,3 +5,14 @@
   padding: 0;
   margin: 0 16px 0 0;
 }
+
+.header__list-element:hover {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1281px) {
+  .header__list-element {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}

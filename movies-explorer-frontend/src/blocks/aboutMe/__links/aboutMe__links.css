@@ -3,3 +3,9 @@
     flex-direction: row;
     margin: 0 0 100px 0;
 }
+
+@media screen and (max-width: 769px) {
+    .aboutMe__links {
+        margin: 0 0 90px 0;
+    }
+}

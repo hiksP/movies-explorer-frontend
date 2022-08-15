@@ -1,6 +1,4 @@
 import React from "react";
-import landingLogo from "../../../images/landing-logo.svg";
-import Header from "../../Header/Header"
 
 export default function Promo() {
     return (

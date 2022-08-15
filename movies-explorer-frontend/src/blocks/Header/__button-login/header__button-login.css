@@ -8,8 +8,16 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
+  transition: .4s ease-in opacity;
 }
 
 .header__button-login:hover {
   cursor: pointer;
+  opacity: .4;
+}
+
+@media screen and (max-width: 1281px) {
+  .header__button-login {
+    font-size: 12px;
+  }
 }

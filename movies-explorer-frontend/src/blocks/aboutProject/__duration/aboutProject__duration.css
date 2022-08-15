@@ -9,4 +9,19 @@
     border: solid 2px #F2F2F2;
     width: 920px;
     height: 40px;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 1281px) {
+    .aboutProject__duration {
+        width: 910px;
+        height: 36px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .aboutProject__duration {
+        width: 528px;
+    }
 }

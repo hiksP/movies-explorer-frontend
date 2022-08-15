@@ -8,3 +8,15 @@
     color: black;
     border-bottom: 1px solid black;
 }
+
+@media screen and (max-width: 1281px) {
+    .techs__title {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .techs__title {
+        margin: 0 auto 80px;
+    }
+}

@@ -10,3 +10,10 @@
     display: flex;
     justify-content: center;
 }
+
+@media screen and (max-width: 1281px) {
+    .footer__project-text {
+        font-size: 13px;
+        line-height: 16px;
+    }
+}

@@ -6,3 +6,9 @@
     margin: 0 auto 26px;
     padding: 0;
 }
+
+@media screen and (max-width: 769px) {
+    .techs__subtitle {
+        margin: 0 auto 22px;
+    }
+}

@@ -6,3 +6,18 @@
     padding: 0;
     color: black;
 }
+
+@media screen and (max-width: 1281px) {
+    .aboutMe__text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .aboutMe__text {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 85px 0;
+    }
+}

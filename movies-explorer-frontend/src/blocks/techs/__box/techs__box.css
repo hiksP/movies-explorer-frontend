@@ -14,3 +14,18 @@
     height: 60px;
     width: 90px;
 }
+
+@media screen and (max-width: 1281px) {
+    .techs__box {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .techs__box {
+        font-size: 12px;
+        line-height: 14px;
+        height: 57px;
+        width: 84px;
+    }
+}

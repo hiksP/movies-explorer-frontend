@@ -1,6 +1,12 @@
 .aboutProject__main-content {
-    margin: 0 0 110px 0;
+    margin: 0 0 120px 0;
     padding: 0;
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 769px) {
+    .aboutProject__main-content {
+        margin: 0 0 90px 0;
+    }
 }

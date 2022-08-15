@@ -7,3 +7,10 @@
     justify-content: center;
     background-color: #F5F5F5;
 }
+
+@media screen and (max-width: 769px) {
+    .techs {
+        max-width: calc(100% - 100px);
+        padding: 90px 50px 0;
+    }
+}
