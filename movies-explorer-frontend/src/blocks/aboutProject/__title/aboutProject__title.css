@@ -21,3 +21,12 @@
         padding: 90px 0 23px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .aboutProject__title {
+        padding: 70px 0 28px;
+        margin: 0 0 61px 0;
+        font-size: 18px;
+        line-height: 21px;
+    }
+}

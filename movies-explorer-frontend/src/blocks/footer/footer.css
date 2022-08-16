@@ -13,3 +13,10 @@
         padding: 0 30px 20px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .footer {
+        max-width: calc(100% - 20px);
+        padding: 0 10px 10px;
+    }
+}

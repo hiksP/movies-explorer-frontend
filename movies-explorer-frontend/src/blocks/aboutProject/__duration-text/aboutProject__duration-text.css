@@ -6,3 +6,11 @@
     line-height: 17px;
     color: #A0A0A0;
 }
+
+@media screen and (max-width: 321px) {
+    .aboutProject__duration-text {
+        margin: 10px 0 0;
+        font-size: 11px;
+        line-height: 12px;
+    }
+}

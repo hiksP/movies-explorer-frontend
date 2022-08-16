@@ -11,3 +11,10 @@
         padding: 0 0 90px 0;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .techs__main-container {
+        padding: 0 0 70px 0;
+        flex-wrap: wrap;
+    }
+}

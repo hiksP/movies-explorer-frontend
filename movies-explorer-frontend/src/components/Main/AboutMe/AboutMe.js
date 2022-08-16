@@ -5,6 +5,7 @@ export default function AboutMe() {
     return (
         <div className="aboutMe">
             <h2 className="aboutMe__title"><a name="student">Студент</a></h2>
+            <img src={photo} alt="фотография" className="aboutMe__photo aboutMe__photo_mobile"></img>
             <div className="aboutMe__container">
                 <div className="aboutMe__info-box">
                     <h3 className="aboutMe__name">Петр</h3>

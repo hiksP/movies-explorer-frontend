@@ -21,3 +21,12 @@
         margin: 0 auto 80px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .techs__text {
+        max-width: 292px;
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0 auto 50px;
+    }
+}

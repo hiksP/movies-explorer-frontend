@@ -19,3 +19,11 @@
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: 321px) {
+  .header__button-register {
+    font-size: 10px;
+    line-height: 16px;
+    margin: 0 15px 0 0;
+  }
+}

@@ -29,3 +29,9 @@
         width: 84px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .techs__box {
+        margin: 0 10px 10px 0;
+    }
+}

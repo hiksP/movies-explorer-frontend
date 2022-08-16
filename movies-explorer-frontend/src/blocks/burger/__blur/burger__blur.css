@@ -8,4 +8,6 @@
     opacity: 1;
     transform: translateX(-100%);
     transition: 0.4s ease-in-out;
+    opacity: .3;
+    background-color: #000000;
 }

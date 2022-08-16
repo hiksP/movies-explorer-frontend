@@ -10,3 +10,9 @@
         max-width: 364px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .aboutMe__info-box {
+        max-width: 292px;
+    }
+}

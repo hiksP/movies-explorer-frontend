@@ -11,3 +11,9 @@
         height: 307px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .aboutMe__photo {
+        display: none;
+    }
+}

@@ -6,3 +6,10 @@
     padding: 0;
     color: black;
 }
+
+@media screen and (max-width: 321px) {
+    .footer__year {
+        font-size: 12px;
+        line-height: 14px;
+    }
+}

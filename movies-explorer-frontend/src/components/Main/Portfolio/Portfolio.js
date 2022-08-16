@@ -14,7 +14,7 @@ export default function Portfolio() {
                     <a href="#" className="portfolio__link-image"></a>
                 </li>
                 <li className="portfolio__item">
-                    <p className="portfolio__text">Одностраничное приложение сайт</p>
+                    <p className="portfolio__text">Одностраничное приложение</p>
                     <a href="#" className="portfolio__link-image "></a>
                 </li>
             </ul>

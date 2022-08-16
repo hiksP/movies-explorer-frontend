@@ -25,3 +25,12 @@
         width: 528px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .aboutProject__duration {
+        font-size: 11px;
+        line-height: 13px;
+        width: 184px;
+        height: 35px;
+    }
+}

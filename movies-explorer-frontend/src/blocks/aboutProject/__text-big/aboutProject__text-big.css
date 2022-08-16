@@ -17,3 +17,11 @@
         margin:  0 0 22px 0;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .aboutProject__text-big {
+        margin:  0 0 16px 0;
+        font-size: 18px;
+        line-height: 21px;
+    }
+}

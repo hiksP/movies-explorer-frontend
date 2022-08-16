@@ -14,3 +14,10 @@
         padding: 90px 50px 0;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .techs {
+        max-width: calc(100% - 36px);
+        padding: 70px 18px 0;
+    }
+}

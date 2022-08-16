@@ -10,3 +10,10 @@
 .aboutProject__container:last-of-type {
     margin: 0;
 }
+
+@media screen and (max-width: 321px) {
+    .aboutProject__container {
+        max-width: 284px;
+        margin: 0 0 56px 0;
+    }
+}

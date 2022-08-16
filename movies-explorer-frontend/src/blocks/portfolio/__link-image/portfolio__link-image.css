@@ -15,3 +15,10 @@
         width: 27px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .portfolio__link-image {
+        width: 18px;
+        height: 28px;
+    }
+}

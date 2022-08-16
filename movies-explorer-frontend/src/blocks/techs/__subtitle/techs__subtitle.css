@@ -12,3 +12,11 @@
         margin: 0 auto 22px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .techs__subtitle {
+        margin: 0 auto 24px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+}

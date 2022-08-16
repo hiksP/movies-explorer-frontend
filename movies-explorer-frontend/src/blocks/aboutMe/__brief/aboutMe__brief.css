@@ -14,3 +14,10 @@
         margin: 0 0 20px 0;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .aboutMe__brief {
+        font-size: 11px;
+        line-height: 16px;
+    }
+}

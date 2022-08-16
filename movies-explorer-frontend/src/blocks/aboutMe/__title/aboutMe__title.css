@@ -20,3 +20,11 @@
         margin: 90px auto 65px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .aboutMe__title {
+        font-size: 18px;
+        line-height: 21px;
+        margin: 70px auto 60px;
+    }
+}

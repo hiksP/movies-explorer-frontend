@@ -9,3 +9,9 @@
         margin: 0 0 90px 0;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .aboutMe__links {
+        margin: 0 0 69px 0;
+    }
+}
