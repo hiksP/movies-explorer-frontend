@@ -14,3 +14,10 @@
         height: 258px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .moviesCard {
+        width: 300px;
+        height: 236px;
+    }
+}

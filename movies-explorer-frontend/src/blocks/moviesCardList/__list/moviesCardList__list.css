@@ -19,3 +19,10 @@
         gap: 35px 30px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .moviesCardList__list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px 0;
+    }
+}

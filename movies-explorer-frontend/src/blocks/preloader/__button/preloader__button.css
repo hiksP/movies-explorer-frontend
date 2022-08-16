@@ -28,3 +28,9 @@
         max-width: calc(100% - 60px);
     }
 }
+
+@media screen and (max-width: 321px) {
+    .preloader__button {
+        max-width: calc(100% - 20px);
+    }
+}

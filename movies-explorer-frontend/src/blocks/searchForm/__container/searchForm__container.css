@@ -17,3 +17,12 @@
         filter: none;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .searchForm__container {
+        max-width: 300px;
+        filter: none;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

@@ -18,3 +18,9 @@
         margin: 0 auto 35px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .login__input {
+        margin: 0 auto 25px;
+    }
+}

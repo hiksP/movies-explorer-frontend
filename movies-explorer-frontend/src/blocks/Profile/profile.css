@@ -11,3 +11,9 @@
         padding: 235px 0 270px;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .profile {
+        padding: 70px 0 40px;
+    }
+}

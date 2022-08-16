@@ -10,9 +10,16 @@ export default function SearchForm() {
     const sliderButton = () => {
         isSliderActive ? setSliderActive(false) : setSliderActive(true);
     }
+
+    const [width, SetWidth] = useState(window.outerWidth);
+
+    window.addEventListener('resize', () => {
+        const windowInnerWidth = window.innerWidth
+        SetWidth(windowInnerWidth)
+    })
     
 
-    return(
+    return width > 321 ? (
         <div className="searchForm">
             <div className="searchForm__container">
             <img src={search} alt="лупа" className="searchForm__input-icon"></img>
@@ -26,5 +33,20 @@ export default function SearchForm() {
                 <p className="searchForm__text">Короткометражки</p>
             </div>
         </div>
-    );
+    ) : (
+        <div className="searchForm">
+            <div className="searchForm__container">
+                <form className="searchForm__form">
+                    <input placeholder="Фильм" className="searchForm__input" type="text"></input>
+                    <button className="searchForm__search-button"></button>
+                </form>
+            </div>
+            <div className="searchForm__button-container">
+                <button onClick={sliderButton} className={isSliderActive ? `searchForm__slider searchForm__slider_active` : `searchForm__slider`}>
+                    <div  className={isSliderActive ? `searchForm__slider-circle searchForm__slider-circle_active` : `searchForm__slider-circle` }></div>
+                </button>
+                <p className="searchForm__text">Короткометражки</p>
+            </div>
+        </div>
+    )
 };

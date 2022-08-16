@@ -4,6 +4,7 @@
 @import url(../../../blocks/searchForm/__input-icon/searchForm__input-icon.css);
 @import url(../../../blocks/searchForm/__input/searchForm__input.css);
 @import url(../../../blocks/searchForm/__search-button/searchForm__search-button.css);
+@import url(../../../blocks/searchForm/__button-container/searchForm__button-container.css);
 @import url(../../../blocks/searchForm/__slider/searchForm__slider.css);
 @import url(../../../blocks/searchForm/__slider/_active/searchForm__slider_active.css);
 @import url(../../../blocks/searchForm/__slider-circle/searchForm__slider-circle.css);

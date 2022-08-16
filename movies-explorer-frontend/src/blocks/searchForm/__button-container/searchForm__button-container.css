@@ -1,0 +1,5 @@
+.searchForm__button-container {
+    display: flex;
+    align-self: center;
+    margin-top: 45px;
+}

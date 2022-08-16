@@ -12,3 +12,9 @@
         padding: 404px 0 0;
     }
 }
+
+@media screen and (max-width: 321px) {
+    .notFound {
+        padding: 325px 0 0;
+    }
+}

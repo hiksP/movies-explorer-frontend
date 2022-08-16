@@ -6,3 +6,11 @@
     flex-direction: column;
     width: 410px;
 }
+
+@media screen and (max-width: 321px) {
+    .login__list {
+        width: 260px;
+        margin: 0 auto 250px;
+        padding: 0;
+    }
+}

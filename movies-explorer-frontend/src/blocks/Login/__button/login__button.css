@@ -30,3 +30,11 @@
         width: 395px;
     }
 }
+
+@media screen and (max-width:321px) {
+    .login__button {
+        width: 260px;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
