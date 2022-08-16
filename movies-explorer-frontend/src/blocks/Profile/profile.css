@@ -5,3 +5,9 @@
     margin: 0 auto;
     padding: 74px 0;
 }
+
+@media screen and (max-width: 769px) {
+    .profile {
+        padding: 235px 0 270px;
+    }
+}

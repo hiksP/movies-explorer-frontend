@@ -5,3 +5,9 @@
     margin: 0 auto 25px;
     padding: 0;
 }
+
+@media screen and (max-width: 769px) {
+    .notFound__title {
+        margin: 0 auto 5px;
+    }
+}

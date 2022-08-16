@@ -5,9 +5,11 @@
     color: #3456F3;
     margin: 0 auto;
     padding: 0 0 60px;
-    text-decoration: none;   
+    text-decoration: none;
+    transition: .4s ease-in opacity;
 }
 
 .notFound__link:hover{
     cursor: pointer;
+    opacity: .4;
 }

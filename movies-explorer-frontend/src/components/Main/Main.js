@@ -9,6 +9,7 @@ import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
 
 export default function Main() {
+
     return (
         <>
             <Header main={true}/>

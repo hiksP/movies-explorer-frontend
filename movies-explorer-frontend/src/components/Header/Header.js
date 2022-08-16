@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../images/logo.svg";
 import icon from "../../images/profile_icon.svg";
 import { Link, Route, Routes } from "react-router-dom";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 export default function Header({main}) {
 
@@ -26,14 +27,7 @@ export default function Header({main}) {
                 <Link className="header__link" to={'/saved-movies'}><ul className="header__list-element">Сохранненые фильмы</ul></Link>
             </li>
         </div>
-        <div className="header__column">
-            <li className="header__list">
-                <Link className="header__link" to={'/profile'}><ul className="header__list-element">Аккаунт</ul></Link>
-                <ul className="header__list-container">
-                    <img className="header__profile-icon" src={icon} alt="Иконка"/>
-                </ul>
-            </li>
-        </div>
+        <BurgerMenu></BurgerMenu>
     </div>
     )
 }

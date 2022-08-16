@@ -12,3 +12,9 @@
     font-size: 14px;
     line-height: 16px;
 }
+
+@media screen and (max-width:1281px) {
+    .login__input {
+        margin: 0 auto 35px;
+    }
+}

@@ -17,3 +17,16 @@
     opacity: .4;
     cursor: pointer;
 }
+
+@media screen and (max-width:1281px) {
+    .login__button {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}
+
+@media screen and (max-width:769px) {
+    .login__button {
+        width: 395px;
+    }
+}

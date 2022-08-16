@@ -1,0 +1,4 @@
+.burger__item_active {
+    padding-bottom: 4px;
+    border-bottom: 1px solid black;
+}

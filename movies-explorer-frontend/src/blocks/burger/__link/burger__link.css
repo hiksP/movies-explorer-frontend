@@ -1,0 +1,14 @@
+.burger__link {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+    transition: .4s ease-in opacity;
+}
+
+.burger__link:hover {
+    opacity: .4;
+    cursor: pointer;
+}

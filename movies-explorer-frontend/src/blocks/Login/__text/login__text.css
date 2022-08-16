@@ -6,3 +6,10 @@
     font-size: 16px;
     line-height: 24px;
 }
+
+@media screen and (max-width: 1281px) {
+    .login__text {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}

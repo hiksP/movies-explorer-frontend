@@ -13,3 +13,10 @@
     opacity: .4;
     cursor: pointer;
 }
+
+@media screen and (max-width: 1281px) {
+    .login__link {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}

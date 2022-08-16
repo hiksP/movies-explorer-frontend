@@ -1,0 +1,16 @@
+.burger__close-button {
+    height: 22px;
+    width: 22px;
+    position: relative;
+    background: url(../../../images/closeBurger.svg) no-repeat center;
+    border: none;
+    outline: none;
+    transition: .4s ease-in opacity;
+    top: 3%;
+    left: 90%;
+}
+
+.burger__close-button:hover {
+    cursor: pointer;
+    opacity: .4;
+}

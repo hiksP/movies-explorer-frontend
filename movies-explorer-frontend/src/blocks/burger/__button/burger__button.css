@@ -1,0 +1,34 @@
+.burger__button {
+    padding: 0;
+    width: 28px;
+    height: 24px;
+    border: none;
+    outline: none;
+    position: relative;
+    background-color: #FAFAFA;
+    right: 10px;
+    transition: ease-in .4s opacity;
+}
+
+.burger__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 28px;
+    background-color: black;
+    height: 2px;
+}
+
+.burger__button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 28px;
+    background-color: black;
+    height: 2px;
+}
+
+.burger__button:hover {
+    cursor: pointer;
+    opacity: .4;
+}

@@ -1,0 +1,13 @@
+.burger__item {
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 21px;
+    padding: 0;
+    margin: 0 0 28px 0;
+    transition: ease-in .4s opacity;
+}
+
+.burger__item:hover {
+    cursor: pointer;
+    opacity: .4;
+}

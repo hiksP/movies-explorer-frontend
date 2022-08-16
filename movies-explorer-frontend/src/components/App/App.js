@@ -6,7 +6,7 @@ import Profile from "../Profile/Profile";
 import Main  from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Switch } from "react-router-dom";
 
 
 export default function App() {
@@ -31,6 +31,9 @@ export default function App() {
             }/>
             <Route path="/signup" element={
               <Register></Register>
+            }/>
+            <Route path="*" element={
+              <NotFoundPage></NotFoundPage>
             }/>
           </Routes>
         </div>

@@ -6,3 +6,10 @@
   line-height: 16px;
   margin-bottom: -16px;
 }
+
+@media screen and (max-width: 1281px) {
+  .profile__text {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}

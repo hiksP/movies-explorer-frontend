@@ -1,0 +1,14 @@
+@import url(../../blocks/burger/burger.css);
+@import url(../../blocks/burger/__button/burger__button.css);
+@import url(../../blocks/burger/__style/burger__style.css);
+@import url(../../blocks/burger/__blur/burger__blur.css);
+@import url(../../blocks/burger/__blur/_active/burger__blur_active.css);
+@import url(../../blocks/burger/__content/burger__content.css);
+@import url(../../blocks/burger/__content/_active/burger__content_active.css);
+@import url(../../blocks/burger/__close-button/burger__close-button.css);
+@import url(../../blocks/burger/__list/burger__list.css);
+@import url(../../blocks/burger/__item/burger__item.css);
+@import url(../../blocks/burger/__item/_active/burger__item_active.css);
+@import url(../../blocks/burger/__profile/burger__profile.css);
+@import url(../../blocks/burger/__link/burger__link.css);
+@import url(../../blocks/burger/__profile-icon/burger__profile-icon.css);
