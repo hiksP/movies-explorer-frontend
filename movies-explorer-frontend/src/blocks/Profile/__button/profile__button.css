@@ -24,7 +24,7 @@
   }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 465px) {
   .profile__button {
     font-size: 12px;
     line-height: 14px;

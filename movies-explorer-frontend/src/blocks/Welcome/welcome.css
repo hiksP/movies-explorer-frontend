@@ -17,7 +17,7 @@
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 465px) {
     .welcome {
         align-items: center;
         max-width: 260px;

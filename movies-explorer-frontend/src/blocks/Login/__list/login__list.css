@@ -7,7 +7,7 @@
     width: 410px;
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 465px) {
     .login__list {
         width: 260px;
         margin: 0 auto 250px;
