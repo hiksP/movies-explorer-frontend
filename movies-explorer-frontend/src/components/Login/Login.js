@@ -4,7 +4,7 @@ import { Link, Route, Routes } from "react-router-dom";
 
 export default function Login() {
     return (
-        <> 
+        <>
             <Welcome text={'Рады видеть'}/>
             <div className="login">
                 <form className="login__form">
