@@ -12,7 +12,14 @@
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 740px) {
+    .aboutMe__photo {
+        width: 235px;
+        height: 285px;
+    }
+}
+
+@media screen and (max-width: 620px) {
     .aboutMe__photo {
         display: none;
     }

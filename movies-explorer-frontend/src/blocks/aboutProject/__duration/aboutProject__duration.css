@@ -20,13 +20,58 @@
     }
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1240px) {
+    .aboutProject__duration {
+        width: 810px;
+    }
+}
+
+@media screen and (max-width: 1190px) {
+    .aboutProject__duration {
+        width: 610px;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .aboutProject__duration {
+        width: 540px;
+    }
+}
+
+
+
+@media screen and (max-width: 795px) {
     .aboutProject__duration {
         width: 528px;
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 728px) {
+    .aboutProject__duration {
+        width: 428px;
+    }
+}
+
+@media screen and (max-width: 627px) {
+    .aboutProject__duration {
+        width: 328px;
+    }
+}
+
+@media screen and (max-width: 527px) {
+    .aboutProject__duration {
+        width: 228px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .aboutProject__duration {
+        width: 190px;
+    }
+}
+
+
+@media screen and (max-width: 358px) {
     .aboutProject__duration {
         font-size: 11px;
         line-height: 13px;

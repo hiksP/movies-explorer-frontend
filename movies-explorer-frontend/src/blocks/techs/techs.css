@@ -8,14 +8,21 @@
     background-color: #F5F5F5;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1361px) {
+    .techs {
+        max-width: calc(100% - 140px);
+        padding: 100px 70px 0;
+    }
+}
+
+@media screen and (max-width: 795px) {
     .techs {
         max-width: calc(100% - 100px);
         padding: 90px 50px 0;
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 350px) {
     .techs {
         max-width: calc(100% - 36px);
         padding: 70px 18px 0;

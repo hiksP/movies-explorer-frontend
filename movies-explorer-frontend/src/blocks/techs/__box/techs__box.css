@@ -21,7 +21,7 @@
     }
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 800px) {
     .techs__box {
         font-size: 12px;
         line-height: 14px;
@@ -30,7 +30,7 @@
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 734px) {
     .techs__box {
         margin: 0 10px 10px 0;
     }

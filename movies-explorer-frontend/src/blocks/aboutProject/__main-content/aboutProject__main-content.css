@@ -5,13 +5,13 @@
     justify-content: space-between;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 795px) {
     .aboutProject__main-content {
         margin: 0 0 90px 0;
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 734px) {
     .aboutProject__main-content {
         margin: 0 0 60px 0;
         flex-direction: column;

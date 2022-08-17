@@ -8,7 +8,14 @@
     background-color: #FAFAFA;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1361px) {
+    .portfolio {
+        max-width: calc(100% - 140px);
+        padding: 0 70px 0;
+    }
+}
+
+@media screen and (max-width: 795px) {
     .portfolio {
         max-width: calc(100% - 100px);
         padding: 0 50px 0;
