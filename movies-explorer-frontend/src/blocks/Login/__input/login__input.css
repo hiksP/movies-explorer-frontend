@@ -1,6 +1,6 @@
 .login__input {
     border: none;
-    margin: 0 auto 25px;
+    margin: 0;
     padding: 0 0 10px 0;
     border-bottom: solid 2px #E8E8E8;
     background-color: inherit;
@@ -11,16 +11,4 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
-}
-
-@media screen and (max-width:1281px) {
-    .login__input {
-        margin: 0 auto 35px;
-    }
-}
-
-@media screen and (max-width: 465px) {
-    .login__input {
-        margin: 0 auto 25px;
-    }
-}
+};

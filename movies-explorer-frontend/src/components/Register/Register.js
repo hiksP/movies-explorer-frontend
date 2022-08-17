@@ -9,12 +9,19 @@ export default function Register() {
             <div className="login">
                 <form className="login__form">
                     <ul className="login__list">
-                        <p className="login__input-text">Имя</p>
-                        <input className="login__input" required type="text"></input>
-                        <p className="login__input-text">E-mail </p>
-                        <input className="login__input" required type="email"></input>
-                        <p className="login__input-text">Пароль </p>
-                        <input className="login__input" required type="text"></input>
+                        <li className='login__item'>
+                            <p className="login__input-text">Имя</p>
+                            <input className="login__input" required type="text"></input>
+                        </li>
+                        <li className='login__item'>
+                            <p className="login__input-text">E-mail </p>
+                            <input className="login__input" required type="email"></input>
+                        </li>
+                        <li className='login__item'>
+                            <p className="login__input-text">Пароль </p>
+                            <input className="login__input login__input_error" required type="text"></input>
+                            <span className='login__error-text login__error-text_active'>Что-то пошло не так</span>
+                        </li>
                     </ul>
                     <button className="login__button" type='submit'>Зарегистрироваться</button>
                 </form>

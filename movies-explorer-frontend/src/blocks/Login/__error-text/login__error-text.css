@@ -1,0 +1,8 @@
+.login__error-text {
+    display: none;
+    font-size: 10px;
+    line-height: 12px;
+    margin: 5px 0 0 0;
+    padding: 0;
+    color: red;
+}
