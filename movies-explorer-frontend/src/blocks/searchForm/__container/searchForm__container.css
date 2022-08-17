@@ -18,7 +18,7 @@
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 450px) {
     .searchForm__container {
         max-width: 300px;
         filter: none;

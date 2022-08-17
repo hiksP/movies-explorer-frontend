@@ -13,7 +13,7 @@
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 450px) {
     .searchForm__text {
         font-size: 11px;
         line-height: 18px;

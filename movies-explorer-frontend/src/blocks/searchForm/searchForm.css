@@ -14,9 +14,27 @@
     }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 750px) {
     .searchForm {
-        padding: 80px 0 110px 0;
+        max-width: 608px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .searchForm {
+        max-width: 508px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .searchForm {
+        max-width: 408px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .searchForm {
+        padding: 80px 10px 110px;
         max-width: 300px;
         border-bottom: 1px solid #E8E8E8;
         margin-bottom: 10px;

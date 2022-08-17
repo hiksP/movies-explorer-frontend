@@ -19,7 +19,7 @@ export default function SearchForm() {
     })
     
 
-    return width > 321 ? (
+    return width > 450 ? (
         <div className="searchForm">
             <div className="searchForm__container">
             <img src={search} alt="лупа" className="searchForm__input-icon"></img>

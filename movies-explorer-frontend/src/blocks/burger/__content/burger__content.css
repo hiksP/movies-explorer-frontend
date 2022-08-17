@@ -9,3 +9,9 @@
     transform: translateX(+100%);
     transition: 0.4s ease-in-out;
 }
+
+@media screen and (max-width: 321px) {
+    .burger__content {
+        width: 100vw;
+    }
+}
