@@ -17,7 +17,7 @@ export default function MoviesCard({saved}) {
                     <h2 className="moviesCard__title">33 слова о дизайне</h2>
                     <p className="moviesCard__duration">1ч 47м</p>
                 </div>
-                <button className='moviesCard__save-button moviesCard__save-button_saved '></button>
+                <button type="button" className='moviesCard__save-button moviesCard__save-button_saved '></button>
             </div>
             <img className="moviesCard__image" src={movieImage} alt="Скриншот из фильма"/>
         </li>
@@ -28,7 +28,7 @@ export default function MoviesCard({saved}) {
                     <h2 className="moviesCard__title">33 слова о дизайне</h2>
                     <p className="moviesCard__duration">1ч 47м</p>
                 </div>
-                <button onClick={saveHandler} className={isSaved ? `moviesCard__save-button moviesCard__save-button_active` : `moviesCard__save-button`}></button>
+                <button type="button" onClick={saveHandler} className={isSaved ? `moviesCard__save-button moviesCard__save-button_active` : `moviesCard__save-button`}></button>
             </div>
             <img className="moviesCard__image" src={movieImage} alt="Скриншот из фильма"/>
         </li>

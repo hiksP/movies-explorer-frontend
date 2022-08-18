@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 export default function MoviesCardList({savedMovies}) {
     return (
-        <div className="moviesCardList">
+        <section className="moviesCardList">
             <ul className="moviesCardList__list">
                 <MoviesCard saved={savedMovies}></MoviesCard>
                 <MoviesCard saved={savedMovies}></MoviesCard>
@@ -12,6 +12,6 @@ export default function MoviesCardList({savedMovies}) {
                 <MoviesCard saved={savedMovies}></MoviesCard>
                 <MoviesCard saved={savedMovies}></MoviesCard>
             </ul>
-        </div>
+        </section>
     );
 };

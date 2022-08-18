@@ -10,9 +10,11 @@ export default function Movies() {
     return (
         <>
             <Header></Header>
-            <SearchForm></SearchForm>
-            <MoviesCardList savedMovies={false}></MoviesCardList>
-            <Preloader></Preloader>
+            <main>
+              <SearchForm></SearchForm>
+              <MoviesCardList savedMovies={false}></MoviesCardList>
+              <Preloader></Preloader>
+            </main>
             <Footer></Footer>
         </>
     );

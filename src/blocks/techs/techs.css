@@ -24,6 +24,7 @@
 
 @media screen and (max-width: 350px) {
     .techs {
+        background-color: #FAFAFA;
         max-width: calc(100% - 36px);
         padding: 70px 18px 0;
     }

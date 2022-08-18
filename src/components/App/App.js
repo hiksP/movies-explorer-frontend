@@ -11,6 +11,8 @@ import { Routes, Route, useNavigate, Switch } from "react-router-dom";
 
 export default function App() {
 
+    document.documentElement.lang = 'ru'
+
     return(
         <div className="page">
           <Routes>

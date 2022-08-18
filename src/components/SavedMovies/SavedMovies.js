@@ -9,8 +9,10 @@ export default function SavedMovies() {
     return(
         <>
             <Header></Header>
-            <SearchForm></SearchForm>
-            <MooviesCardList savedMovies={true}></MooviesCardList>
+            <main>
+              <SearchForm></SearchForm>
+              <MooviesCardList savedMovies={true}></MooviesCardList>
+            </main>
             <Footer></Footer>
         </>
     );

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AboutProject() {
     return (
-        <div className="aboutProject">
+        <section className="aboutProject">
             <h2 className="aboutProject__title"><a name="about">О проекте</a></h2>
             <div className="aboutProject__main-content">
                 <div className="aboutProject__container">
@@ -24,6 +24,6 @@ export default function AboutProject() {
                     <p className="aboutProject__duration-text">Front-end</p>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };

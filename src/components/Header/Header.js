@@ -7,19 +7,19 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 export default function Header({main}) {
 
     return main ? (
-        <div className="header header_main">
+        <header className="header header_main">
             <div className="header__column">
                 <Link className="header__link" to={'/'}><img className="header__logo" src={logo} alt="Логотип"/></Link>
             </div>
             <div className="header__column">
                 <li className="header__list">
                     <Link className="header__button-register" to={'/signup'}>Регистрация</Link>
-                    <Link className="header__link" to={'/signin'}> <button className="header__button-login">Войти</button> </Link>
+                    <Link className="header__link" to={'/signin'}> <button type="button" className="header__button-login">Войти</button> </Link>
                 </li>
             </div>
-        </div>
+        </header>
     ) : (
-        <div className="header">
+        <header className="header">
         <div className="header__column">
             <Link className="header__link" to={'/'}><img className="header__logo" src={logo} alt="Логотип"/></Link>
             <li className="header__list">
@@ -28,6 +28,6 @@ export default function Header({main}) {
             </li>
         </div>
         <BurgerMenu></BurgerMenu>
-    </div>
+    </header>
     )
 }

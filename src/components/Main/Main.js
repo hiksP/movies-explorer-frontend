@@ -13,12 +13,14 @@ export default function Main() {
     return (
         <>
             <Header main={true}/>
-            <Promo></Promo>
-            <NavTab></NavTab>
-            <AboutProject></AboutProject>
-            <Techs></Techs>
-            <AboutMe></AboutMe>
-            <Portfolio></Portfolio>
+            <main>
+              <Promo></Promo>
+              <NavTab></NavTab>
+              <AboutProject></AboutProject>
+              <Techs></Techs>
+              <AboutMe></AboutMe>
+              <Portfolio></Portfolio>
+            </main>
             <Footer></Footer>
         </>
     )
