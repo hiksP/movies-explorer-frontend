@@ -1,0 +1,26 @@
+.promo__title {
+    margin: 0 auto;
+    align-self: center;
+    width: 100%;
+    max-width: 720px;
+    height: 320px;
+    padding: 0;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    background: url(../../../images/landing-logo.svg) no-repeat center ;
+    background-size: 320px 320px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 321px) {
+    .promo__title {
+        font-size: 31px;
+        line-height: 39px;
+        max-width: 300px;
+        height: 248px;
+        background-size: 248px 248px;
+    }
+}

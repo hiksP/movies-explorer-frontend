@@ -1,0 +1,12 @@
+.aboutProject__duration-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    padding-bottom: 110px;
+}
+
+@media screen and (max-width: 795px) {
+    .aboutProject__duration-container {
+        padding-bottom: 90px
+    }
+}

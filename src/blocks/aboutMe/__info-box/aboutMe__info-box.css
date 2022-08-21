@@ -1,0 +1,30 @@
+.aboutMe__info-box {
+    display: flex;
+    flex-direction: column;
+    max-width: 620px;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 1100px) {
+    .aboutMe__info-box {
+        max-width: 500px;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .aboutMe__info-box {
+        max-width: 364px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .aboutMe__info-box {
+        max-width: 264px;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .aboutMe__info-box {
+        max-width: 292px;
+    }
+}

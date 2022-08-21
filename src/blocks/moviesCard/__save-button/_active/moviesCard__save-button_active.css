@@ -1,0 +1,4 @@
+.moviesCard__save-button_active {
+    background: #3456F3 url(../../../../images/savedIconWhite.png) no-repeat center;
+    border: 1px solid #3456F3;   
+}

@@ -1,0 +1,14 @@
+.aboutMe__photo_mobile {
+    display: none;
+    width: 285px;
+    height: 352px;
+    margin: 0 0 40px 0;
+    padding: 0;
+    align-self: center;
+}
+
+@media screen and (max-width: 620px) {
+    .aboutMe__photo_mobile {
+        display: flex;
+    }
+}

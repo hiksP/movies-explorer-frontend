@@ -1,0 +1,30 @@
+.moviesCard {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    width: 365px;
+    height: 270px;
+    background-color: #FFFFFF;
+}
+
+@media screen and (max-width: 1200px) {
+    .moviesCard {
+        width: 345px;
+        height: 260px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .moviesCard {
+        width: 339px;
+        height: 258px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .moviesCard {
+        width: 300px;
+        height: 236px;
+    }
+}

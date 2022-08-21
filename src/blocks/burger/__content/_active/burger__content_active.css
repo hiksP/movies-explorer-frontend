@@ -1,0 +1,3 @@
+.burger__content_active {
+    transform: translateX(0);
+}

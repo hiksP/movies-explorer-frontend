@@ -1,0 +1,31 @@
+.techs {
+    display: flex;
+    margin: 0 auto;
+    padding: 100px 180px 0;
+    max-width: calc(100% - 360px);
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F5F5F5;
+}
+
+@media screen and (max-width: 1361px) {
+    .techs {
+        max-width: calc(100% - 140px);
+        padding: 100px 70px 0;
+    }
+}
+
+@media screen and (max-width: 795px) {
+    .techs {
+        max-width: calc(100% - 100px);
+        padding: 90px 50px 0;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .techs {
+        background-color: #FAFAFA;
+        max-width: calc(100% - 36px);
+        padding: 70px 18px 0;
+    }
+}

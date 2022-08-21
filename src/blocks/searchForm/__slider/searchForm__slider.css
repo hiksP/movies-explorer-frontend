@@ -1,0 +1,22 @@
+.searchForm__slider {
+    width: 36px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #EBEBEB;
+    border: #EBEBEB solid 1px;
+    padding: 0;
+    margin: 0 15px 0 0;
+    transition: ease-in-out .4s opacity;
+}
+
+.searchForm__slider:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+
+@media screen and (max-width:321px) {
+    .searchForm__slider {
+        margin: 0 10px 0 0;
+        align-self: center;
+    }
+}

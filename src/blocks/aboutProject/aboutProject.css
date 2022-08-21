@@ -1,0 +1,30 @@
+.aboutProject {
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0 180px 0;
+    max-width: calc(100% - 360px);
+    justify-content: center;
+}
+
+@media screen and (max-width: 1362px) {
+    .aboutProject {
+        max-width: calc(100% - 140px);
+        padding: 0 70px 0;
+    }
+}
+
+@media screen and (max-width: 795px) {
+    .aboutProject {
+        max-width: calc(100% - 100px);
+        padding: 0 50px 0;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .aboutProject {
+        max-width: calc(100% - 36px);
+        padding: 0 18px 0;
+    }
+}

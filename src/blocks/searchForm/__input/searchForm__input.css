@@ -1,0 +1,21 @@
+.searchForm__input {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.searchForm__input:focus {
+  color: #3456F3;
+  opacity: .6;
+}
+
+@media screen and (max-width: 450px) {
+    .searchForm__input {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}

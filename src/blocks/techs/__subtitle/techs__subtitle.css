@@ -1,0 +1,22 @@
+.techs__subtitle {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    color: black;
+    margin: 0 auto 26px;
+    padding: 0;
+}
+
+@media screen and (max-width: 769px) {
+    .techs__subtitle {
+        margin: 0 auto 22px;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .techs__subtitle {
+        margin: 0 auto 24px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+}

@@ -1,0 +1,30 @@
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: calc(100% - 360px);
+    padding: 0 180px 0;
+    justify-content: center;
+    background-color: #FAFAFA;
+}
+
+@media screen and (max-width: 1361px) {
+    .portfolio {
+        max-width: calc(100% - 140px);
+        padding: 0 70px 0;
+    }
+}
+
+@media screen and (max-width: 795px) {
+    .portfolio {
+        max-width: calc(100% - 100px);
+        padding: 0 50px 0;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .portfolio {
+        max-width: calc(100% - 28px);
+        padding: 0 14px 0;
+    }
+}

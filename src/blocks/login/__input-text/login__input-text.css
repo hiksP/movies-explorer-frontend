@@ -1,0 +1,15 @@
+.login__input-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #A0A0A0;
+    margin: 0;
+    padding: 0 0 5px 0;   
+}
+
+@media screen and (max-width: 1281px) {
+    .login__input-text {
+        font-size: 10px;
+        line-height: 12px;
+    }
+}

@@ -1,0 +1,16 @@
+.login__list {
+    list-style: none;
+    margin: 0 auto 200px;
+    padding: 40px 0 0;
+    display: flex;
+    flex-direction: column;
+    width: 410px;
+}
+
+@media screen and (max-width: 465px) {
+    .login__list {
+        width: 260px;
+        margin: 0 auto 250px;
+        padding: 0;
+    }
+}

@@ -1,0 +1,8 @@
+.burger__style {
+    content: '';
+    position: absolute;
+    top: 11px;
+    width: 28px;
+    background-color: black;
+    height: 2px;
+}

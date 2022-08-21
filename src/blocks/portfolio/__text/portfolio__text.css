@@ -1,0 +1,26 @@
+.portfolio__text {
+    color: black;
+    font-size: 30px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    transition: .4s ease-in opacity;
+}
+
+.portfolio__text:hover {
+    cursor: pointer;
+    opacity: .4;
+}
+
+@media screen and (max-width: 769px) {
+    .portfolio__text {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .portfolio__text {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}

@@ -1,0 +1,32 @@
+.aboutMe__link {
+    color: black;
+    font-size: 16px;
+    line-height: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0;
+    margin: 0 20px 0 0;
+    transition: .4s ease-in opacity;
+}
+
+.aboutMe__link:last-of-type {
+    margin: 0;
+}
+
+.aboutMe__link:hover {
+    cursor: pointer;
+    opacity: .4;
+}
+
+@media screen and (max-width: 1281px) {
+    .aboutMe__link {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .aboutMe__link {
+        margin: 0 25px 0 0;
+    }
+}

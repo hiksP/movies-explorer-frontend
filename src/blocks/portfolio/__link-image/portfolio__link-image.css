@@ -1,0 +1,24 @@
+.portfolio__link-image {
+    background: url(../../../images/portfolio-button.svg) no-repeat center;
+    width: 30px;
+    height: 60px;
+    transition: .4s ease-in opacity;
+}
+
+.portfolio__link-image:hover {
+    cursor: pointer;
+    opacity: .4;
+}
+
+@media screen and (max-width: 769px) {
+    .portfolio__link-image {
+        width: 27px;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .portfolio__link-image {
+        width: 18px;
+        height: 28px;
+    }
+}

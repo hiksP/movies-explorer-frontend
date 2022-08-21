@@ -1,0 +1,21 @@
+.notFound__title {
+    font-weight: 400;
+    font-size: 140px;
+    line-height: 170px;
+    margin: 0 auto 25px;
+    padding: 0;
+}
+
+@media screen and (max-width: 769px) {
+    .notFound__title {
+        margin: 0 auto 5px;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .notFound__title {
+        font-size: 80px;
+        line-height: 96px;
+        margin: 0 auto 10px;
+    }
+}

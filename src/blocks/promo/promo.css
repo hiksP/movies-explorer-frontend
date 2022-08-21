@@ -1,0 +1,7 @@
+.promo {
+    background-color: #DDDEE3;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 50vh;
+    display: flex;
+}

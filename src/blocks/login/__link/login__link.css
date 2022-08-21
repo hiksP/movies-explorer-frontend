@@ -1,0 +1,29 @@
+.login__link {
+    color: #3456F3;
+    text-decoration: none;
+    margin: 0;
+    padding: 0 0 0 6px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    transition: .4s ease-in opacity;
+}
+
+.login__link:hover {
+    opacity: .4;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1281px) {
+    .login__link {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}
+
+@media screen and (max-width: 465px) {
+    .login__link {
+        font-size: 12px;
+        line-height: 14px;
+    }
+}

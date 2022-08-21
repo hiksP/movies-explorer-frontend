@@ -1,0 +1,25 @@
+.aboutProject__container {
+    margin: 0 40px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 600px;
+}
+
+.aboutProject__container:last-of-type {
+    margin: 0;
+}
+
+@media screen and (max-width: 734px) {
+    .aboutProject__container {
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .aboutProject__container {
+        max-width: 284px;
+        margin: 0 0 56px 0;
+    }
+}

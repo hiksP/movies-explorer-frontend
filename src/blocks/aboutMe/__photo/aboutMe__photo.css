@@ -1,0 +1,26 @@
+.aboutMe__photo {
+    width: 270px;
+    height: 327px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 769px) {
+    .aboutMe__photo {
+        width: 255px;
+        height: 307px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .aboutMe__photo {
+        width: 235px;
+        height: 285px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .aboutMe__photo {
+        display: none;
+    }
+}
