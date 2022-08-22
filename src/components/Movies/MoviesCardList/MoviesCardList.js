@@ -1,16 +1,13 @@
 import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-export default function MoviesCardList({savedMovies}) {
+export default function MoviesCardList({savedMovies, section}) {
+
+
     return (
         <section className="moviesCardList">
             <ul className="moviesCardList__list">
-                <MoviesCard saved={savedMovies}></MoviesCard>
-                <MoviesCard saved={savedMovies}></MoviesCard>
-                <MoviesCard saved={savedMovies}></MoviesCard>
-                <MoviesCard saved={savedMovies}></MoviesCard>
-                <MoviesCard saved={savedMovies}></MoviesCard>
-                <MoviesCard saved={savedMovies}></MoviesCard>
+                {section}
             </ul>
         </section>
     );

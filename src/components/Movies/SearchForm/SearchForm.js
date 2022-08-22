@@ -8,7 +8,7 @@ export default function SearchForm() {
     const [isSliderActive, setSliderActive] = useState(false);
 
     const sliderButton = () => {
-        isSliderActive ? setSliderActive(false) : setSliderActive(true);
+        setSliderActive(!isSliderActive);
     }
 
     const [width, SetWidth] = useState(window.outerWidth);
@@ -24,7 +24,7 @@ export default function SearchForm() {
             <div className="searchForm__container">
             <img src={search} alt="лупа" className="searchForm__input-icon"></img>
                 <form className="searchForm__form">
-                    <input required="true" placeholder="Фильм" className="searchForm__input" type="text"></input>
+                    <input required={true} placeholder="Фильм" className="searchForm__input" type="text"></input>
                     <button type="submit" className="searchForm__search-button"></button>
                 </form>
                 <button type="button" onClick={sliderButton} className={isSliderActive ? `searchForm__slider searchForm__slider_active` : `searchForm__slider`}>
@@ -37,7 +37,7 @@ export default function SearchForm() {
         <section className="searchForm">
             <div className="searchForm__container">
                 <form className="searchForm__form">
-                    <input required="true" placeholder="Фильм" className="searchForm__input" type="text"></input>
+                    <input required={true} placeholder="Фильм" className="searchForm__input" type="text"></input>
                     <button type="submit" className="searchForm__search-button"></button>
                 </form>
             </div>
