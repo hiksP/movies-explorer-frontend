@@ -9,6 +9,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import { Routes, Route, useNavigate, Switch, Navigate } from "react-router-dom";
 import {mainApi} from '../../utils/MainApi';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import {moviesApi} from '../../utils/MoviesApi';
 
 
 export default function App() {
@@ -25,6 +26,20 @@ export default function App() {
 
     const [currentUser, setCurrentUser] = useState({})
 
+
+    const [allMovies, setAllMovies] = useState([])
+    const [foundMovies, setFoundMovies] = useState([]);
+
+    React.useEffect(() => {
+      moviesApi.getInfo()
+      .then((movies) => {
+        setAllMovies(movies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    })
+
     // функция регистрации
     const handleRegister = ({name, email, password}) => {
       mainApi.signUp(name, email, password)
@@ -40,7 +55,7 @@ export default function App() {
     const handleLogin = ({email, password}) => {
       mainApi.signIn(email, password)
       .then((res) => {
-        localStorage.setItem("jwt", res.token);
+        createCookieInHour('jwt', res.token, 168)
         setLoggedIn(true);
         navigate('/');
       })
@@ -49,13 +64,31 @@ export default function App() {
       })
     }
 
-    // функция создания куки
-    const createCookieInHour = (cookieName, cookieValue, hourToExpire) => {
-      let date = new Date();
-      date.setTime(date.getTime()+(hourToExpire*60*60*1000));
-      document.cookie = cookieName + " = " + cookieValue + "; expires = " +date.toGMTString();
-    };
+    // Функция поиска фильмов
+    const handleSearch = (input) => {
+      const foundMoive = allMovies.filter((movie) => {
+          return movie.nameRU.toLowerCase().includes(input.toLowerCase())
+      });
+      return setFoundMovies(foundMoive);
+    }
 
+      // функция создания куки
+      const createCookieInHour = (cookieName, cookieValue, hourToExpire) => {
+        let date = new Date();
+        date.setTime(date.getTime()+(hourToExpire*60*60*1000));
+        document.cookie = cookieName + " = " + cookieValue + "; expires = " +date.toGMTString();
+      };
+
+
+    useEffect(() => {
+        mainApi.getMe()
+        .then((res) => {
+          setLoggedIn(true)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }, [])
 
     return(
       <CurrentUserContext.Provider value={currentUser}>
@@ -65,7 +98,7 @@ export default function App() {
               <Main></Main>
             }/>
             <Route path="/movies" element={
-              <Movies></Movies>
+              <Movies searchMovie={handleSearch} cards={foundMovies}></Movies>
             }/>
             <Route path="/saved-movies" element={
               <SavedMovies></SavedMovies>

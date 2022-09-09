@@ -3,7 +3,7 @@ import { useState } from "react";
 import search from "../../../images/search-icon.svg"
 
 
-export default function SearchForm() {
+export default function SearchForm({searchMovie}) {
 
     const [isSliderActive, setSliderActive] = useState(false);
 
@@ -18,13 +18,24 @@ export default function SearchForm() {
         SetWidth(windowInnerWidth)
     })
 
+    const [movieInput, setMovieInput] = useState('')
+
+    const inputHandler = (e) => {
+      setMovieInput(e.target.value);
+    }
+
+    const submitForm = (e) => {
+      e.preventDefault();
+      searchMovie(movieInput);
+    }
+
 
     return width > 450 ? (
         <section className="searchForm">
             <div className="searchForm__container">
             <img src={search} alt="лупа" className="searchForm__input-icon"></img>
-                <form className="searchForm__form">
-                    <input required={true} placeholder="Фильм" className="searchForm__input" type="text"></input>
+                <form className="searchForm__form" onSubmit={submitForm}>
+                    <input value={movieInput} onChange={inputHandler} placeholder="Фильм" className="searchForm__input" type="text"></input>
                     <button type="submit" className="searchForm__search-button"></button>
                 </form>
                 <button type="button" onClick={sliderButton} className={isSliderActive ? `searchForm__slider searchForm__slider_active` : `searchForm__slider`}>
@@ -37,7 +48,7 @@ export default function SearchForm() {
         <section className="searchForm">
             <div className="searchForm__container">
                 <form className="searchForm__form">
-                    <input required={true} placeholder="Фильм" className="searchForm__input" type="text"></input>
+                    <input required={true} onChange={inputHandler} placeholder="Фильм" className="searchForm__input" type="text"></input>
                     <button type="submit" className="searchForm__search-button"></button>
                 </form>
             </div>

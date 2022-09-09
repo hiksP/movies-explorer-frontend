@@ -4,7 +4,7 @@ import SavedMovies from "../../SavedMovies/SavedMovies";
 
 export default function MoviesCard({saved, card}) {
 
-
+    console.log(saved);
     const duration = (time) => {
       const hours = Math.floor(time / 60);
       const min = time % 60;

@@ -26,31 +26,31 @@ class MainApi {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({email, password})
     }).then((res) => this._getResponseData(res))
   }
 
-  signOut(jwt) {
+  signOut() {
     return fetch(`${this._baseUrl}/signout`, {
       method: "POST",
       credentials: "include",
       headers: {
-        "cookie": jwt
+        "Content-Type": "application/json"
       },
     }).then((res) => this._getResponseData(res))
   }
 
-  getMe(jwt) {
+  getMe() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      credentials: "include",
+      credentials: 'include',
       headers: {
-        "cookie": jwt
+          "Content-Type": "application/json",
       }
-    }).then((res) => this._getResponseData(res));
-  }
+  }).then((res) => this._getResponseData(res))
+}
 
 }
 
