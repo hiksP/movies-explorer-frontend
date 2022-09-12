@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import { moviesApi } from "../../utils/MoviesApi";
 import { useState } from "react";
 
-export default function Movies({searchMovie, cards}) {
+export default function Movies({searchMovie, cards, preloader, noMovies}) {
 
     return (
         <>
@@ -16,7 +16,7 @@ export default function Movies({searchMovie, cards}) {
             <main>
               <SearchForm searchMovie={searchMovie}></SearchForm>
               <MoviesCardList cards={cards} savedMovies={false}></MoviesCardList>
-              <Preloader></Preloader>
+              <Preloader foundmovies={cards} active={preloader} noMovies={noMovies}></Preloader>
             </main>
             <Footer></Footer>
         </>

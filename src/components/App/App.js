@@ -29,6 +29,8 @@ export default function App() {
 
     const [allMovies, setAllMovies] = useState([])
     const [foundMovies, setFoundMovies] = useState([]);
+    const [isPreloaderActive, setPreloaderActive] = useState(false);
+    const [noMovies, setNoMovies] = useState('');
 
     React.useEffect(() => {
       moviesApi.getInfo()
@@ -37,6 +39,7 @@ export default function App() {
       })
       .catch((err) => {
         console.log(err);
+        setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
       })
     })
 
@@ -66,10 +69,20 @@ export default function App() {
 
     // Функция поиска фильмов
     const handleSearch = (input) => {
+      setPreloaderActive(true);
       const foundMoive = allMovies.filter((movie) => {
           return movie.nameRU.toLowerCase().includes(input.toLowerCase())
       });
-      return setFoundMovies(foundMoive);
+      if (foundMoive.length === 0) {
+        setNoMovies('Ничего не найдено');
+        setPreloaderActive(false);
+      } else {
+        setTimeout(() => {
+          setPreloaderActive(false);
+        }, 500);
+        setFoundMovies(foundMoive);
+        setNoMovies('');
+      }
     }
 
       // функция создания куки
@@ -98,7 +111,7 @@ export default function App() {
               <Main></Main>
             }/>
             <Route path="/movies" element={
-              <Movies searchMovie={handleSearch} cards={foundMovies}></Movies>
+              <Movies searchMovie={handleSearch} cards={foundMovies} preloader={isPreloaderActive} noMovies={noMovies}></Movies>
             }/>
             <Route path="/saved-movies" element={
               <SavedMovies></SavedMovies>

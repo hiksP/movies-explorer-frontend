@@ -1,0 +1,8 @@
+.preloader__text {
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
