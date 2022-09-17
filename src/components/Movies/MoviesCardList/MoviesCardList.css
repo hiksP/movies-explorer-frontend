@@ -1,2 +1,4 @@
 @import url(../../../blocks/moviesCardList/moviesCardList.css);
 @import url(../../../blocks/moviesCardList/__list/moviesCardList__list.css);
+@import url(../../../blocks/moviesCardList/__button/moviesCardList__button.css);
+@import url(../../../blocks/moviesCardList/__button/_active/moviesCardList__button_active.css);

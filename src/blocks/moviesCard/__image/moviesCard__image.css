@@ -1,5 +1,5 @@
 .moviesCard__image {
     object-fit: cover;
-    height: 100%;
+    height: calc(100% - 65px);
     width: 100%;
 };

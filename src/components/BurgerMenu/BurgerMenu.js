@@ -8,8 +8,10 @@ export default function BurgerMenu() {
     const [width, SetWidth] = useState(window.outerWidth);
 
     window.addEventListener('resize', () => {
+      setTimeout(() => {
         const windowInnerWidth = window.innerWidth
         SetWidth(windowInnerWidth)
+      }, 1000)
     })
 
     const [menuActive, setMenuActive] = useState(false)

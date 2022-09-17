@@ -5,8 +5,6 @@ import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import MoviesCard from "./MoviesCard/MoviesCard";
 import Preloader from "./Preloader/Preloader";
 import Footer from "../Footer/Footer";
-import { moviesApi } from "../../utils/MoviesApi";
-import { useState } from "react";
 
 export default function Movies({searchMovie, cards, preloader, noMovies}) {
 
