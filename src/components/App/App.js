@@ -58,7 +58,6 @@ export default function App() {
     const handleLogin = ({email, password}) => {
       mainApi.signIn(email, password)
       .then((res) => {
-        createCookieInHour('jwt', res.token, 168)
         setLoggedIn(true);
         navigate('/');
       })
@@ -84,13 +83,6 @@ export default function App() {
         setNoMovies('');
       }
     }
-
-      // функция создания куки
-      const createCookieInHour = (cookieName, cookieValue, hourToExpire) => {
-        let date = new Date();
-        date.setTime(date.getTime()+(hourToExpire*60*60*1000));
-        document.cookie = cookieName + " = " + cookieValue + "; expires = " +date.toGMTString();
-      };
 
 
     useEffect(() => {
