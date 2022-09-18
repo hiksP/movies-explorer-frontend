@@ -1,22 +1,76 @@
 import React from "react";
 import Welcome from "../Welcome/Welcome";
 import { Link, Route, Routes } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useState } from 'react';
 
 export default function Login({onLogin}) {
 
-    // создаем рефы
-    const emailRef = useRef();
-    const passwordRef = useRef();
+    // стейты инпутов
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    //были ли мы в инпуте
+
+    const [emailDirty, isEmailDirty] = useState(false);
+    const [passwordDirty, isPasswordDirty] = useState(false);
+
+    //стейт ошибок
+    const [emailError, setEmailError] = useState('Емейл не может быть пустым');
+    const [passwordError, setPasswordError] = useState('Пароль не может быть пустым');
+
+    // стейт кнопки
+    const [formValid, setFormValid] = useState(false);
+
+    // функции ввода инпута
+    const emailHandler = (e) => {
+      setEmail(e.target.value);
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if(!re.test(String(e.target.value).toLowerCase())) {
+        isEmailDirty(true);
+        setEmailError('Некорректный емейл');
+      } else {
+        setEmailError('');
+      }
+    }
+
+    const passwordHandler = (e) => {
+      setPassword(e.target.value);
+      if(password.length >= 0) {
+        setPasswordError('')
+      }
+    }
+
+    const blurHandler = (e) => {
+      switch(e.target.name) {
+        case 'name':
+          isNameDirty(true)
+          break
+        case 'email':
+          isEmailDirty(true)
+          break
+        case 'password':
+          isPasswordDirty(true);
+          break
+      }
+  }
 
     const handleSubmit = (e) => {
       e.preventDefault();
 
       onLogin({
-        email: emailRef.current.value,
-        password: passwordRef.current.value
+        email: email,
+        password: password,
       });
     }
+
+    useEffect(() => {
+      if ( emailError || passwordError ) {
+        setFormValid(false)
+      } else {
+        setFormValid(true);
+      }
+    }, [emailError, passwordError])
+
 
 
     return (
@@ -28,14 +82,16 @@ export default function Login({onLogin}) {
                       <ul className="login__list">
                           <li className="login__item">
                               <p className="login__input-text">Email</p>
-                              <input ref={emailRef} defaultValue="" className="login__input" required type="email"></input>
+                              <input value={email} name='email' onChange={e => emailHandler(e)} onBlur={e => blurHandler(e)} className={emailDirty && emailError ? `login__input login__input_error` : `login__input`} required={true}></input>
+                              <span className={emailDirty && emailError ? `login__error-text login__error-text_active` : `login__error-text`}>{emailError}</span>
                           </li>
                           <li className="login__item">
                               <p className="login__input-text">Пароль </p>
-                              <input ref={passwordRef} defaultValue="" className="login__input" required type="text"></input>
+                              <input value={password} name='password' onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} className={passwordDirty && passwordError ? `login__input login__input_error` : `login__input`} required={true}></input>
+                              <span className={passwordDirty && passwordError ? `login__error-text login__error-text_active` : `login__error-text`}>{passwordError}</span>
                           </li>
                       </ul>
-                      <button className="login__button" type="submit">Войти</button>
+                      <button disabled={!formValid} className={!formValid ? `login__button login__button_disabled` : `login__button`} type="submit">Войти</button>
                   </form>
                   <p className="login__text">Еще не зарегестрированы?
                       <Link to={'/signup'} className="login__link">Регистрация</Link>

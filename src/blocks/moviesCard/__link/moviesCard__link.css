@@ -1,0 +1,13 @@
+.moviesCard__link {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  height: calc(100% - 65px);
+  transition: .4s ease-in opacity;
+}
+
+.moviesCard__link:hover {
+  cursor: pointer;
+  opacity: .4;
+}

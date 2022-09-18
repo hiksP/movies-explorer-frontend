@@ -8,5 +8,6 @@
 @import url(../../blocks/login/__error-text/login__error-text.css);
 @import url(../../blocks/login/__error-text/_active/login__error-text_active.css);
 @import url(../../blocks/login/__button/login__button.css);
+@import url(../../blocks/login/__button/_disabled/login__button_disabled.css);
 @import url(../../blocks/login/__text/login__text.css);
 @import url(../../blocks/login/__link/login__link.css);
