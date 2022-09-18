@@ -45,6 +45,7 @@ class MainApi {
   getMe() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
+      withCredentials: 'true',
       credentials: 'include',
       headers: {
           "Content-Type": "application/json",

@@ -35,7 +35,10 @@ export default function Login({onLogin}) {
 
     const passwordHandler = (e) => {
       setPassword(e.target.value);
-      if(password.length >= 0) {
+      if(e.target.value === '') {
+        isPasswordDirty(true);
+        setPasswordError('Пароль не может быть пустым')
+      } else {
         setPasswordError('')
       }
     }

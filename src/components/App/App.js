@@ -32,7 +32,7 @@ export default function App() {
     const [isPreloaderActive, setPreloaderActive] = useState(false);
     const [noMovies, setNoMovies] = useState('');
 
-    React.useEffect(() => {
+    useEffect(() => {
       moviesApi.getInfo()
       .then((movies) => {
         setAllMovies(movies);
@@ -41,7 +41,7 @@ export default function App() {
         console.log(err);
         setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
       })
-    })
+    }, [loggedIn])
 
     // функция регистрации
     const handleRegister = ({name, email, password}) => {
