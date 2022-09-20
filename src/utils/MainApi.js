@@ -26,6 +26,7 @@ class MainApi {
       method: "POST",
       credentials: "include",
       headers: {
+        "Access-Control-Expose-Headers": "Set-Cookie",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({email, password})
@@ -39,19 +40,36 @@ class MainApi {
       headers: {
         "Content-Type": "application/json"
       },
-    }).then((res) => this._getResponseData(res))
+    }).then((res) => {
+      if(!res.ok) {
+        return Promise.reject(`Ошибка ${res.status}`)
+      } else return res;
+    })
+  }
+
+  patchUser(name, email) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({name, email})
+    }).then((res) => this._getResponseData(res));
   }
 
   getMe() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
-      withCredentials: 'true',
-      credentials: 'include',
+      method: 'GET',
       headers: {
-          "Content-Type": "application/json",
-      }
-  }).then((res) => this._getResponseData(res))
-}
+        "Access-Control-Expose-Headers": "Set-Cookie",
+        "Content-Type": "application/json"
+      },
+      credentials: 'include',
+    })
+      .then((res) => this._getResponseData(res));
+  };
+
 
 }
 

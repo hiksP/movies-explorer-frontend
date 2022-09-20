@@ -66,6 +66,29 @@ export default function App() {
       })
     }
 
+    // функця изминения данных
+    const handlePatchUser = (name, email) => {
+      mainApi.patchUser(name, email)
+      .then((res) => {
+        setCurrentUser(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+
+    const handleLogOut = () => {
+      mainApi.signOut()
+      .then((res) => {
+        navigate('/');
+        setCurrentUser({});
+        setLoggedIn(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
     // Функция поиска фильмов
     const handleSearch = (input) => {
       setPreloaderActive(true);
@@ -89,6 +112,7 @@ export default function App() {
         mainApi.getMe()
         .then((res) => {
           setLoggedIn(true)
+          setCurrentUser(res);
         })
         .catch((err) => {
           console.log(err)
@@ -109,7 +133,7 @@ export default function App() {
               <SavedMovies></SavedMovies>
             }/>
             <Route path="/profile" element={
-              <Profile></Profile>
+              <Profile getInfo={handlePatchUser} logOut={handleLogOut}></Profile>
             }/>
             <Route path="/signin" element={
               <Login onLogin={handleLogin}></Login>
