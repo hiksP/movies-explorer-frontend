@@ -32,6 +32,7 @@ export default function App() {
     const [isPreloaderActive, setPreloaderActive] = useState(false);
     const [noMovies, setNoMovies] = useState('');
     const [ savedMovies, setSavedMovies ] = useState([]);
+    const [registerError, setRegisterError] = useState('')
 
     useEffect(() => {
         moviesApi.getInfo()
@@ -48,10 +49,16 @@ export default function App() {
     const handleRegister = ({name, email, password}) => {
       mainApi.signUp(name, email, password)
       .then((res) => {
-        navigate('/signin')
+        mainApi.signIn(email, password)
+        .then((res) => {
+          setLoggedIn(true);
+          navigate('/movies');
+        })
       })
       .catch((err) => {
-        console.log(err);
+        if(err === 'Ошибка 409') {
+          setRegisterError('Такой пользователь уже зарегестрирован')
+        } else setRegisterError(err);
       })
     }
 
@@ -154,7 +161,7 @@ export default function App() {
               <Movies searchMovie={handleSearch} cards={foundMovies} handleSave={handleSave} preloader={isPreloaderActive} noMovies={noMovies} handleRemove={handleRemove} savedMovies={savedMovies}></Movies>
             }/>
             <Route path="/saved-movies" element={
-              <SavedMovies></SavedMovies>
+              <SavedMovies cards={savedMovies}></SavedMovies>
             }/>
             <Route path="/profile" element={
               <Profile getInfo={handlePatchUser} logOut={handleLogOut}></Profile>
@@ -163,7 +170,7 @@ export default function App() {
               <Login onLogin={handleLogin}></Login>
             }/>
             <Route path="/signup" element={
-              <Register register={handleRegister}></Register>
+              <Register register={handleRegister} error={registerError}></Register>
             }/>
             <Route path="*" element={
               <NotFoundPage></NotFoundPage>

@@ -3,7 +3,7 @@ import Welcome from '../Welcome/Welcome';
 
 import { Link } from "react-router-dom";
 
-export default function Register({register}) {
+export default function Register({register, error}) {
 
     //стейты инпутов
     const [email, setEmail] = useState('');
@@ -110,6 +110,7 @@ export default function Register({register}) {
                               <span className={passwordDirty && passwordError ? `login__error-text login__error-text_active` : `login__error-text`}>{passwordError}</span>
                           </li>
                       </ul>
+                      <p className={error ? `login__error-text login__error-text_active` : `login__error-text`}>{error}</p>
                       <button disabled={!formValid} className={!formValid ? `login__button login__button_disabled` : `login__button`} type='submit'>Зарегистрироваться</button>
                   </form>
                   <p className="login__text">Уже зарегестрированы?

@@ -5,13 +5,13 @@ import MooviesCardList from '../Movies/MoviesCardList/MoviesCardList'
 import SearchForm from "../Movies/SearchForm/SearchForm";
 
 
-export default function SavedMovies() {
+export default function SavedMovies({cards}) {
     return(
         <>
             <Header></Header>
             <main>
               <SearchForm></SearchForm>
-              <MooviesCardList savedMovies={true}></MooviesCardList>
+              <MooviesCardList cards={cards}></MooviesCardList>
             </main>
             <Footer></Footer>
         </>

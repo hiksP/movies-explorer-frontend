@@ -14,6 +14,7 @@ export default function Profile({getInfo, logOut}) {
   const [emailError, setEmailError] = useState('');
   const [nameError, setNameError] = useState('');
   const [formValid, setFormValid] = useState(false);
+  const [sameDataError, setSameDateError] = useState('');
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -53,13 +54,25 @@ export default function Profile({getInfo, logOut}) {
     getInfo(name, email);
   }
 
+  const infoChecker = () => {
+    if(name === currentUser.name && email === currentUser.email) {
+      setSameDateError('Данные должны отличаться от предыдущих!')
+    } else {
+      setSameDateError('');
+    }
+  }
+
   useEffect(() => {
-    if ( nameError || emailError ) {
+    infoChecker()
+  }, [name, email])
+
+  useEffect(() => {
+    if ( nameError || emailError || sameDataError ) {
       setFormValid(false)
     } else {
       setFormValid(true);
     }
-  }, [nameError, emailError])
+  }, [nameError, emailError, sameDataError])
 
     return(
         <>
@@ -74,7 +87,7 @@ export default function Profile({getInfo, logOut}) {
                           <span className={nameDirty && nameError ? `profile__error-text profile__error-text_active` : `profile__error-text`}>{nameError}</span>
                           <p className="profile__text">{currentUser.email}</p>
                           <input value={email} name='email' onBlur={(e) => blurHandler(e)} onChange={(e) => emailHandler(e)} className="profile__input"></input>
-                          <span className={emailDirty && emailError ? `profile__error-text profile__error-text_active` : `profile__error-text`}>{emailError}</span>
+                          <span className={emailDirty && emailError || sameDataError ? `profile__error-text profile__error-text_active` : `profile__error-text`}>{emailError || sameDataError}</span>
                       </ul>
                       <button type="button" disabled={!formValid} className={!formValid ? `profile__button profile__button_disabled` : `profile__button`} onClick={(e) => changeInfo(e)}>Редактировать</button>
                       <button type="button" onClick={logOut} className="profile__button profile__button_exit">Выйти из аккаунта</button>

@@ -8,6 +8,16 @@ export default function MoviesCardList({cards, handleSave, handleRemove, savedMo
   window.addEventListener('resize', () => {
     setTimeout(displayWidthCheck, 1000)
   })
+  const [saveSection, setSaveSection] = useState(false)
+  const path = document.location.pathname;
+
+  useEffect(() => {
+    if(path === '/saved-movies') {
+      setSaveSection(true)
+    } else {
+      setSaveSection(false)
+    }
+  }, [])
 
   const displayWidthCheck = () => {
     const display = window.innerWidth;
@@ -40,7 +50,7 @@ useEffect(() => {
         <section className="moviesCardList">
             <ul className="moviesCardList__list">
                 {cards.slice(0, counter).map((card) => {
-                  return <MoviesCard key={card.id} saved={false} card={card} _id={card._id} handleSave={handleSave} handleRemove={handleRemove} savedMovies={savedMovies}></MoviesCard>
+                  return <MoviesCard key={card.id} saveSection={saveSection} card={card} _id={card._id} handleSave={handleSave} handleRemove={handleRemove} savedMovies={savedMovies}></MoviesCard>
                 })}
             </ul>
             <button className={!(cards.length < counter + 1) ? `moviesCardList__button` : `moviesCardList__button moviesCardList__button_unactive`} onClick={handlerShowPosts}>Ещё</button>
