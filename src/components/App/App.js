@@ -31,17 +31,18 @@ export default function App() {
     const [foundMovies, setFoundMovies] = useState([]);
     const [isPreloaderActive, setPreloaderActive] = useState(false);
     const [noMovies, setNoMovies] = useState('');
+    const [ savedMovies, setSavedMovies ] = useState([]);
 
     useEffect(() => {
-      moviesApi.getInfo()
-      .then((movies) => {
-        setAllMovies(movies);
-      })
-      .catch((err) => {
-        console.log(err);
-        setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
-      })
-    }, [loggedIn])
+        moviesApi.getInfo()
+        .then((movies) => {
+          setAllMovies(movies);
+        })
+        .catch((err) => {
+          console.log(err);
+          setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+        })
+    }, [])
 
     // функция регистрации
     const handleRegister = ({name, email, password}) => {
@@ -107,6 +108,29 @@ export default function App() {
       }
     }
 
+    const handleSave = (card) => {
+      const {country, director, duration, year, description, image, trailerLink, thumbnail, id, nameRU, nameEN} = card;
+      mainApi.saveMoive(country, director, duration, year, description, `https://api.nomoreparties.co${card.image.url}`, trailerLink, thumbnail, id, nameRU, nameEN)
+      .then((res) => {
+        setSavedMovies([res, ...savedMovies]);
+        console.log(savedMovies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
+    const handleRemove = (id) => {
+      mainApi.deleteMovie(id)
+      .then((res) => {
+        const lessMovies = savedMovies.filter((movie) => movie._id !== id);
+        setSavedMovies(lessMovies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
 
     useEffect(() => {
         mainApi.getMe()
@@ -127,7 +151,7 @@ export default function App() {
               <Main></Main>
             }/>
             <Route path="/movies" element={
-              <Movies searchMovie={handleSearch} cards={foundMovies} preloader={isPreloaderActive} noMovies={noMovies}></Movies>
+              <Movies searchMovie={handleSearch} cards={foundMovies} handleSave={handleSave} preloader={isPreloaderActive} noMovies={noMovies} handleRemove={handleRemove} savedMovies={savedMovies}></Movies>
             }/>
             <Route path="/saved-movies" element={
               <SavedMovies></SavedMovies>

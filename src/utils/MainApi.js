@@ -70,6 +70,39 @@ class MainApi {
       .then((res) => this._getResponseData(res));
   };
 
+  saveMoive(country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN) {
+    return fetch(`${this._baseUrl}/movies`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        country: country,
+        director: director,
+        duration: duration,
+        year: year,
+        description: description,
+        image: image,
+        trailerLink: trailerLink,
+        thumbnail: thumbnail || image,
+        movieId: movieId,
+        nameRU: nameRU,
+        nameEN: nameEN
+      })
+    }).then((res) => this._getResponseData(res));
+  }
+
+  deleteMovie(id) {
+    return fetch(`${this._baseUrl}/movies/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then((res) => this._getResponseData(res));
+  }
+
 
 }
 

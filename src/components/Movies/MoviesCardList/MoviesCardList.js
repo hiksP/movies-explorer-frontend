@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-export default function MoviesCardList({cards}) {
+export default function MoviesCardList({cards, handleSave, handleRemove, savedMovies}) {
 
   const [morePosts, setMorePosts] = useState(0)
   const [counter, addCounter] = useState(0);
@@ -40,7 +40,7 @@ useEffect(() => {
         <section className="moviesCardList">
             <ul className="moviesCardList__list">
                 {cards.slice(0, counter).map((card) => {
-                  return <MoviesCard key={card.id} saved={false} card={card}></MoviesCard>
+                  return <MoviesCard key={card.id} saved={false} card={card} _id={card._id} handleSave={handleSave} handleRemove={handleRemove} savedMovies={savedMovies}></MoviesCard>
                 })}
             </ul>
             <button className={!(cards.length < counter + 1) ? `moviesCardList__button` : `moviesCardList__button moviesCardList__button_unactive`} onClick={handlerShowPosts}>Ещё</button>

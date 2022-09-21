@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-export default function MoviesCard({saved, card}) {
+export default function MoviesCard({saved, card, handleSave, handleRemove, savedMovies}) {
+
     const duration = (time) => {
       const hours = Math.floor(time / 60);
       const min = time % 60;
@@ -9,10 +10,22 @@ export default function MoviesCard({saved, card}) {
 
     let movieDuration = duration(card.duration)
 
-    const [isSaved, SaveMovie] = useState(false)
+    const [isSaved, setIsSaved] = useState(false);
 
-    const saveHandler = () => {
-        SaveMovie(!isSaved)
+    const saveHandler = (e) => {
+      setIsSaved(!isSaved)
+      handleSave(card);
+    }
+
+    const removeMovie = () => {
+      let id
+      savedMovies.some((item) => {
+        if(item.movieId === card.id) {
+          id = item._id
+        }
+      })
+      handleRemove(id);
+      setIsSaved(!isSaved)
     }
 
 
@@ -23,7 +36,7 @@ export default function MoviesCard({saved, card}) {
                     <h2 className="moviesCard__title">{card.nameRU}</h2>
                     <p className="moviesCard__duration">{movieDuration}</p>
                 </div>
-                <button type="button" className='moviesCard__save-button moviesCard__save-button_saved '></button>
+                <button type="button" onClick={(e) => {isSaved ? removeMovie(e) : saveHandler(e)}} className={isSaved ? `moviesCard__save-button moviesCard__save-button_saved ` : `moviesCard__save-button`}></button>
             </div>
             <a className="moviesCard__link" href={card.trailerLink} target="_ blank"><img className="moviesCard__image" src={card.image.url} alt="Скриншот из фильма"/></a>
         </li>
@@ -34,7 +47,7 @@ export default function MoviesCard({saved, card}) {
                     <h2 className="moviesCard__title">{card.nameRU}</h2>
                     <p className="moviesCard__duration">{movieDuration}</p>
                 </div>
-                <button type="button" onClick={saveHandler} className={isSaved ? `moviesCard__save-button moviesCard__save-button_active` : `moviesCard__save-button`}></button>
+                <button type="button" onClick={(e) => {isSaved ? removeMovie(e) : saveHandler(e)}} className={isSaved ? `moviesCard__save-button moviesCard__save-button_active` : `moviesCard__save-button`}></button>
             </div>
             <a className="moviesCard__link" href={card.trailerLink} target="_ blank"><img className="moviesCard__image" src={card.image.url ? `https://api.nomoreparties.co${card.image.url}` : card.image} alt="Скриншот из фильма"/></a>
         </li>
