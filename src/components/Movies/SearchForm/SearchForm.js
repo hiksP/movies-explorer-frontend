@@ -3,14 +3,7 @@ import { useState } from "react";
 import search from "../../../images/search-icon.svg"
 
 
-export default function SearchForm({searchMovie}) {
-
-    const [isSliderActive, setSliderActive] = useState(false);
-
-    const sliderButton = () => {
-        setSliderActive(!isSliderActive);
-    }
-
+export default function SearchForm({searchMovie, handlerShortMovies, shortMovies}) {
     const [width, SetWidth] = useState(window.outerWidth);
 
     window.addEventListener('resize', () => {
@@ -38,8 +31,8 @@ export default function SearchForm({searchMovie}) {
                     <input value={movieInput} onChange={inputHandler} placeholder="Фильм" className="searchForm__input" type="text"></input>
                     <button type="submit" className="searchForm__search-button"></button>
                 </form>
-                <button type="button" onClick={sliderButton} className={isSliderActive ? `searchForm__slider searchForm__slider_active` : `searchForm__slider`}>
-                    <div  className={isSliderActive ? `searchForm__slider-circle searchForm__slider-circle_active` : `searchForm__slider-circle` }></div>
+                <button type="button" onClick={handlerShortMovies} className={shortMovies ? `searchForm__slider searchForm__slider_active` : `searchForm__slider`}>
+                    <div  className={shortMovies ? `searchForm__slider-circle searchForm__slider-circle_active` : `searchForm__slider-circle` }></div>
                 </button>
                 <p className="searchForm__text">Короткометражки</p>
             </div>
@@ -53,8 +46,8 @@ export default function SearchForm({searchMovie}) {
                 </form>
             </div>
             <div className="searchForm__button-container">
-                <button type="button" onClick={sliderButton} className={isSliderActive ? `searchForm__slider searchForm__slider_active` : `searchForm__slider`}>
-                    <div  className={isSliderActive ? `searchForm__slider-circle searchForm__slider-circle_active` : `searchForm__slider-circle` }></div>
+                <button type="button" onClick={handlerShortMovies} className={shortMovies ? `searchForm__slider searchForm__slider_active` : `searchForm__slider`}>
+                    <div  className={shortMovies ? `searchForm__slider-circle searchForm__slider-circle_active` : `searchForm__slider-circle` }></div>
                 </button>
                 <p className="searchForm__text">Короткометражки</p>
             </div>

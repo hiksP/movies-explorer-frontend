@@ -29,10 +29,12 @@ export default function App() {
 
     const [allMovies, setAllMovies] = useState([])
     const [foundMovies, setFoundMovies] = useState([]);
+    const [allFoundMovies, setAllFoundMovies] = useState([]);
     const [isPreloaderActive, setPreloaderActive] = useState(false);
     const [noMovies, setNoMovies] = useState('');
     const [ savedMovies, setSavedMovies ] = useState([]);
-    const [registerError, setRegisterError] = useState('')
+    const [registerError, setRegisterError] = useState('');
+    const [onlyShortMovies, setOnlyShortMovies] = useState(false);
 
     useEffect(() => {
         moviesApi.getInfo()
@@ -100,17 +102,19 @@ export default function App() {
     // Функция поиска фильмов
     const handleSearch = (input) => {
       setPreloaderActive(true);
-      const foundMoive = allMovies.filter((movie) => {
+        const foundMovies = allMovies.filter((movie) => {
           return movie.nameRU.toLowerCase().includes(input.toLowerCase())
       });
-      if (foundMoive.length === 0) {
+
+      if (foundMovies.length === 0) {
         setNoMovies('Ничего не найдено');
         setPreloaderActive(false);
       } else {
         setTimeout(() => {
           setPreloaderActive(false);
         }, 500);
-        setFoundMovies(foundMoive);
+        setFoundMovies(foundMovies);
+        setAllFoundMovies(foundMovies);
         setNoMovies('');
       }
     }
@@ -138,7 +142,6 @@ export default function App() {
       })
     }
 
-
     useEffect(() => {
         mainApi.getMe()
         .then((res) => {
@@ -150,6 +153,19 @@ export default function App() {
         })
     }, [])
 
+    const handlerShortMovies = () => {
+      const allMoives = allFoundMovies;
+      setOnlyShortMovies(!onlyShortMovies);
+      if(!onlyShortMovies) {
+        const shortMovies = foundMovies.filter((movie) => {
+          return movie.duration <= 40
+        })
+        setFoundMovies(shortMovies);
+      } else {
+        setFoundMovies(allMoives);
+      }
+    }
+
     return(
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
@@ -158,10 +174,10 @@ export default function App() {
               <Main></Main>
             }/>
             <Route path="/movies" element={
-              <Movies searchMovie={handleSearch} cards={foundMovies} handleSave={handleSave} preloader={isPreloaderActive} noMovies={noMovies} handleRemove={handleRemove} savedMovies={savedMovies}></Movies>
+              <Movies searchMovie={handleSearch} cards={foundMovies} handleSave={handleSave} preloader={isPreloaderActive} noMovies={noMovies} handleRemove={handleRemove} savedMovies={savedMovies} handlerShortMovies={handlerShortMovies} shortMovies={onlyShortMovies}></Movies>
             }/>
             <Route path="/saved-movies" element={
-              <SavedMovies cards={savedMovies}></SavedMovies>
+              <SavedMovies searchMovie={handleSearch} cards={savedMovies} handleSave={handleSave} preloader={isPreloaderActive} noMovies={noMovies} handleRemove={handleRemove} savedMovies={savedMovies}></SavedMovies>
             }/>
             <Route path="/profile" element={
               <Profile getInfo={handlePatchUser} logOut={handleLogOut}></Profile>

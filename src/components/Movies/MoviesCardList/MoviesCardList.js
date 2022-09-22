@@ -43,8 +43,8 @@ useEffect(() => {
 
   const handlerShowPosts = () => {
     addCounter(counter + morePosts);
-
   }
+
 
     return (
         <section className="moviesCardList">
@@ -55,5 +55,5 @@ useEffect(() => {
             </ul>
             <button className={!(cards.length < counter + 1) ? `moviesCardList__button` : `moviesCardList__button moviesCardList__button_unactive`} onClick={handlerShowPosts}>Ещё</button>
         </section>
-    );
+    )
 };

@@ -1,7 +1,7 @@
 
 import React from "react";
 
-export default function Preloader({foundmovies, active, noMovies}) {
+export default function Preloader({active, noMovies}) {
 
     return(
       <section className="preloader">

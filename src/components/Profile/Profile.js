@@ -11,8 +11,8 @@ export default function Profile({getInfo, logOut}) {
   const [name, setName] = useState('');
   const [emailDirty, isEmailDirty] = useState(false);
   const [nameDirty, isNameDirty] = useState(false);
-  const [emailError, setEmailError] = useState('');
-  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('Емейл не может быть пустым');
+  const [nameError, setNameError] = useState('Имя не может быть пустым');
   const [formValid, setFormValid] = useState(false);
   const [sameDataError, setSameDateError] = useState('');
 
