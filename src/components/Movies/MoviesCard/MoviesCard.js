@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 export default function MoviesCard({saveSection, card, handleSave, handleRemove, savedMovies}) {
-
     // подсчет времени
 
     const duration = (time) => {

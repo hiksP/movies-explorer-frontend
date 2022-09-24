@@ -43,6 +43,17 @@ export default function App() {
     const [registerError, setRegisterError] = useState('');
 
 
+      useEffect(() => {
+      mainApi.getMe()
+      .then((res) => {
+        setLoggedIn(true)
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }, [loggedIn])
+
     useEffect(() => {
       if(!localStorage.getItem('allMovies')) {
         moviesApi.getInfo()
@@ -56,18 +67,7 @@ export default function App() {
       } else {
         JSON.parse(localStorage.getItem("allMovies"))
       }
-    }, [loggedIn])
-
-    useEffect(() => {
-      mainApi.getMe()
-      .then((res) => {
-        setLoggedIn(true)
-        setCurrentUser(res);
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-    }, [loggedIn])
+    }, [])
 
     // функция регистрации
     const handleRegister = ({name, email, password}) => {
@@ -166,14 +166,14 @@ export default function App() {
     }
 
     //дописать проблема со стейтами
-    useEffect(() => {
-        if(localShortMovies && localStorage.getItem('onlyShortMovies') === true) {
-          setOnlyShortMovies(true)
-          setFoundMovies(localShortMovies)
-        } else {
-          setFoundMovies(JSON.parse(localStorage.getItem('allFoundMovies')))
-        }
-    }, [])
+    // useEffect(() => {
+    //     if(localShortMovies && localStorage.getItem('onlyShortMovies') === true) {
+    //       setOnlyShortMovies(true)
+    //       setFoundMovies(localShortMovies)
+    //     } else if(localStorage.getItem('allFoundMovies')){
+    //       setFoundMovies(JSON.parse(localStorage.getItem('allFoundMovies')))
+    //     }
+    // }, [])
 
     const handlerShortMovies = () => {
       const allMoives = allFoundMovies;
@@ -227,6 +227,8 @@ export default function App() {
                 handleSave={handleSave}
                 preloader={isPreloaderActive}
                 noMovies={noMovies}
+                handlerShortMovies={handlerShortMovies}
+                shortMovies={onlyShortMovies}
                 handleRemove={handleRemove}
                 savedMovies={savedMovies}></SavedMovies>
               }/>
