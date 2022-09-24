@@ -73,7 +73,7 @@ class MainApi {
   saveMoive(country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN) {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
-      credentials: 'include',
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
@@ -96,7 +96,7 @@ class MainApi {
   deleteMovie(id) {
     return fetch(`${this._baseUrl}/movies/${id}`, {
       method: 'DELETE',
-      credentials: 'include',
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       }

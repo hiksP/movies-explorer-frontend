@@ -50,7 +50,7 @@ useEffect(() => {
         <section className="moviesCardList">
             <ul className="moviesCardList__list">
                 {cards.slice(0, counter).map((card) => {
-                  return <MoviesCard key={card.id} saveSection={saveSection} card={card} _id={card._id} handleSave={handleSave} handleRemove={handleRemove} savedMovies={savedMovies}></MoviesCard>
+                  return <MoviesCard key={card.id || card._id} saveSection={saveSection} card={card} _id={card._id} handleSave={handleSave} handleRemove={handleRemove} savedMovies={cards}></MoviesCard>
                 })}
             </ul>
             <button className={!(cards.length < counter + 1) ? `moviesCardList__button` : `moviesCardList__button moviesCardList__button_unactive`} onClick={handlerShowPosts}>Ещё</button>

@@ -10,6 +10,7 @@ import { Routes, Route, useNavigate, Switch, Navigate } from "react-router-dom";
 import {mainApi} from '../../utils/MainApi';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import {moviesApi} from '../../utils/MoviesApi';
+import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute.js";
 
 
 export default function App() {
@@ -21,31 +22,52 @@ export default function App() {
     // стейт логина
 
     const [loggedIn, setLoggedIn] = useState(false)
+    console.log(loggedIn);
+
+    //данные в локальном хранилище
+    const allMovies = JSON.parse(localStorage.getItem('allMovies'));
+    const localShortMovies = JSON.parse(localStorage.getItem('shortMovies'));
+
+
+    //переключатель короткометражек
+    const [onlyShortMovies, setOnlyShortMovies] = useState(false);
 
     // стейт с данными пользователя
 
     const [currentUser, setCurrentUser] = useState({})
-
-
-    const [allMovies, setAllMovies] = useState([])
     const [foundMovies, setFoundMovies] = useState([]);
     const [allFoundMovies, setAllFoundMovies] = useState([]);
     const [isPreloaderActive, setPreloaderActive] = useState(false);
     const [noMovies, setNoMovies] = useState('');
     const [ savedMovies, setSavedMovies ] = useState([]);
     const [registerError, setRegisterError] = useState('');
-    const [onlyShortMovies, setOnlyShortMovies] = useState(false);
+
 
     useEffect(() => {
+      if(!localStorage.getItem('allMovies')) {
         moviesApi.getInfo()
         .then((movies) => {
-          setAllMovies(movies);
+          localStorage.setItem('allMovies', JSON.stringify(movies))
         })
         .catch((err) => {
           console.log(err);
           setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         })
-    }, [])
+      } else {
+        JSON.parse(localStorage.getItem("allMovies"))
+      }
+    }, [loggedIn])
+
+    useEffect(() => {
+      mainApi.getMe()
+      .then((res) => {
+        setLoggedIn(true)
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }, [loggedIn])
 
     // функция регистрации
     const handleRegister = ({name, email, password}) => {
@@ -105,6 +127,7 @@ export default function App() {
         const foundMovies = allMovies.filter((movie) => {
           return movie.nameRU.toLowerCase().includes(input.toLowerCase())
       });
+      localStorage.setItem('allFoundMovies', JSON.stringify(foundMovies))
 
       if (foundMovies.length === 0) {
         setNoMovies('Ничего не найдено');
@@ -123,8 +146,8 @@ export default function App() {
       const {country, director, duration, year, description, image, trailerLink, thumbnail, id, nameRU, nameEN} = card;
       mainApi.saveMoive(country, director, duration, year, description, `https://api.nomoreparties.co${card.image.url}`, trailerLink, thumbnail, id, nameRU, nameEN)
       .then((res) => {
+        console.log(res);
         setSavedMovies([res, ...savedMovies]);
-        console.log(savedMovies);
       })
       .catch((err) => {
         console.log(err);
@@ -142,24 +165,31 @@ export default function App() {
       })
     }
 
+    //дописать проблема со стейтами
     useEffect(() => {
-        mainApi.getMe()
-        .then((res) => {
-          setLoggedIn(true)
-          setCurrentUser(res);
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+        if(localShortMovies && localStorage.getItem('onlyShortMovies') === true) {
+          setOnlyShortMovies(true)
+          setFoundMovies(localShortMovies)
+        } else {
+          setFoundMovies(JSON.parse(localStorage.getItem('allFoundMovies')))
+        }
     }, [])
 
     const handlerShortMovies = () => {
       const allMoives = allFoundMovies;
+      localStorage.setItem('onlyShort', !onlyShortMovies);
       setOnlyShortMovies(!onlyShortMovies);
+      const shortMovies = foundMovies.filter((movie) => {
+        return movie.duration <= 40
+      })
+
+      localStorage.setItem('shortMovies', JSON.stringify(shortMovies));
+
+      if(shortMovies.length < 1 && !onlyShortMovies) {
+        setNoMovies('Короткометражек нет')
+      } else setNoMovies('')
+
       if(!onlyShortMovies) {
-        const shortMovies = foundMovies.filter((movie) => {
-          return movie.duration <= 40
-        })
         setFoundMovies(shortMovies);
       } else {
         setFoundMovies(allMoives);
@@ -171,16 +201,44 @@ export default function App() {
         <div className="page">
           <Routes>
             <Route path="/" element={
-              <Main></Main>
+              <Main loggedIn={true}></Main>
             }/>
             <Route path="/movies" element={
-              <Movies searchMovie={handleSearch} cards={foundMovies} handleSave={handleSave} preloader={isPreloaderActive} noMovies={noMovies} handleRemove={handleRemove} savedMovies={savedMovies} handlerShortMovies={handlerShortMovies} shortMovies={onlyShortMovies}></Movies>
+              <ProtectedRoute
+              loggedIn={true}
+              component={
+                <Movies searchMovie={handleSearch}
+                cards={foundMovies}
+                handleSave={handleSave}
+                preloader={isPreloaderActive}
+                noMovies={noMovies} handleRemove={handleRemove}
+                savedMovies={savedMovies}
+                handlerShortMovies={handlerShortMovies}
+                shortMovies={onlyShortMovies}></Movies>
+              }/>
             }/>
             <Route path="/saved-movies" element={
-              <SavedMovies searchMovie={handleSearch} cards={savedMovies} handleSave={handleSave} preloader={isPreloaderActive} noMovies={noMovies} handleRemove={handleRemove} savedMovies={savedMovies}></SavedMovies>
+              <ProtectedRoute
+              loggedIn={true}
+              component={
+                <SavedMovies
+                searchMovie={handleSearch}
+                cards={savedMovies}
+                handleSave={handleSave}
+                preloader={isPreloaderActive}
+                noMovies={noMovies}
+                handleRemove={handleRemove}
+                savedMovies={savedMovies}></SavedMovies>
+              }/>
             }/>
             <Route path="/profile" element={
-              <Profile getInfo={handlePatchUser} logOut={handleLogOut}></Profile>
+              <ProtectedRoute
+              loggedIn={true}
+              component={
+                <Profile
+                getInfo={handlePatchUser}
+                logOut={handleLogOut}></Profile>
+              }/>
             }/>
             <Route path="/signin" element={
               <Login onLogin={handleLogin}></Login>

@@ -32,7 +32,7 @@ export default function MoviesCard({saveSection, card, handleSave, handleRemove,
     const removeMovie = () => {
       let id
       savedMovies.some((item) => {
-        if(item.movieId === card.id) {
+        if(item._id === card._id) {
           id = item._id
         }
       })

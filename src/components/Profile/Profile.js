@@ -76,7 +76,7 @@ export default function Profile({getInfo, logOut}) {
 
     return(
         <>
-            <Header main={false}/>
+            <Header/>
             <main>
               <section className="profile">
                   <h1 className="profile__title">{`Привет, ` + `${currentUser.name}`}</h1>
