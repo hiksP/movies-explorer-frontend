@@ -20,7 +20,6 @@ export default function App() {
     const navigate = useNavigate();
 
     // стейт логина
-
     const [loggedIn, setLoggedIn] = useState(false)
     console.log(loggedIn);
 
@@ -41,7 +40,6 @@ export default function App() {
     const [noMovies, setNoMovies] = useState('');
     const [ savedMovies, setSavedMovies ] = useState([]);
     const [registerError, setRegisterError] = useState('');
-
 
       useEffect(() => {
       mainApi.getMe()
@@ -91,7 +89,7 @@ export default function App() {
       mainApi.signIn(email, password)
       .then((res) => {
         setLoggedIn(true);
-        navigate('/');
+        navigate('/movies');
       })
       .catch((err) => {
         console.log(err);
@@ -127,19 +125,30 @@ export default function App() {
         const foundMovies = allMovies.filter((movie) => {
           return movie.nameRU.toLowerCase().includes(input.toLowerCase())
       });
+
+      const shortMovies = foundMovies.filter((movie) => {
+        return movie.duration <= 40
+      })
+      localStorage.setItem('shortMovies', JSON.stringify(shortMovies));
+
+
       localStorage.setItem('allFoundMovies', JSON.stringify(foundMovies))
 
-      if (foundMovies.length === 0) {
-        setNoMovies('Ничего не найдено');
-        setPreloaderActive(false);
+      if(onlyShortMovies) {
+        setFoundMovies(shortMovies);
+        setNoMovies('');
       } else {
-        setTimeout(() => {
-          setPreloaderActive(false);
-        }, 500);
-        setFoundMovies(foundMovies);
-        setAllFoundMovies(foundMovies);
+        setFoundMovies(foundMovies)
         setNoMovies('');
       }
+
+      if (!onlyShortMovies && foundMovies.length < 1) {
+        setNoMovies('Ничего не найдено');
+      } else if(onlyShortMovies && shortMovies.length < 1) {
+        setNoMovies('Короткомтеражке нет')
+      }
+
+      setPreloaderActive(false);
     }
 
     const handleSave = (card) => {
@@ -165,49 +174,49 @@ export default function App() {
       })
     }
 
-    //дописать проблема со стейтами
-    // useEffect(() => {
-    //     if(localShortMovies && localStorage.getItem('onlyShortMovies') === true) {
-    //       setOnlyShortMovies(true)
-    //       setFoundMovies(localShortMovies)
-    //     } else if(localStorage.getItem('allFoundMovies')){
-    //       setFoundMovies(JSON.parse(localStorage.getItem('allFoundMovies')))
-    //     }
-    // }, [])
+
+    useEffect(() => {
+        if(localShortMovies && Boolean(localStorage.getItem('onlyShort'))) {
+          console.log(localStorage.getItem('onlyShort'))
+          setOnlyShortMovies(true)
+          setFoundMovies(localShortMovies)
+        } else if(localStorage.getItem('allFoundMovies')){
+          setNoMovies('')
+          setFoundMovies(JSON.parse(localStorage.getItem('allFoundMovies')))
+        }
+    }, [])
 
     const handlerShortMovies = () => {
-      const allMoives = allFoundMovies;
+      const allMoives = JSON.parse(localStorage.getItem('allFoundMovies'));
       localStorage.setItem('onlyShort', !onlyShortMovies);
       setOnlyShortMovies(!onlyShortMovies);
-      const shortMovies = foundMovies.filter((movie) => {
-        return movie.duration <= 40
-      })
-
-      localStorage.setItem('shortMovies', JSON.stringify(shortMovies));
-
-      if(shortMovies.length < 1 && !onlyShortMovies) {
-        setNoMovies('Короткометражек нет')
-      } else setNoMovies('')
 
       if(!onlyShortMovies) {
-        setFoundMovies(shortMovies);
+        setFoundMovies(localShortMovies);
       } else {
         setFoundMovies(allMoives);
       }
+
+      if(allMoives.length < 1) {
+        setNoMovies('Ничего нет!')
+      } else {
+        setNoMovies('')
+      }
+
     }
 
-    return(
+    return (
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
           <Routes>
             <Route path="/" element={
-              <Main loggedIn={true}></Main>
+              <Main loggedIn={loggedIn}></Main>
             }/>
             <Route path="/movies" element={
               <ProtectedRoute
-              loggedIn={true}
+              loggedIn={loggedIn}
               component={
-                <Movies searchMovie={handleSearch}
+            <Movies searchMovie={handleSearch}
                 cards={foundMovies}
                 handleSave={handleSave}
                 preloader={isPreloaderActive}
@@ -219,7 +228,7 @@ export default function App() {
             }/>
             <Route path="/saved-movies" element={
               <ProtectedRoute
-              loggedIn={true}
+              loggedIn={loggedIn}
               component={
                 <SavedMovies
                 searchMovie={handleSearch}
@@ -235,7 +244,7 @@ export default function App() {
             }/>
             <Route path="/profile" element={
               <ProtectedRoute
-              loggedIn={true}
+              loggedIn={loggedIn}
               component={
                 <Profile
                 getInfo={handlePatchUser}

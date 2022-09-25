@@ -82,7 +82,7 @@ export default function Profile({getInfo, logOut}) {
                   <h1 className="profile__title">{`Привет, ` + `${currentUser.name}`}</h1>
                   <form className="profile__form">
                       <ul className="profile__list">
-                          <p className="profile__text">{currentUser.name}</p>
+                          <p className="profile__text">{currentUser.name || ''}</p>
                           <input value={name} name='name' onBlur={(e) => blurHandler(e)} onChange={(e) => nameHandler(e)} className="profile__input"></input>
                           <span className={nameDirty && nameError ? `profile__error-text profile__error-text_active` : `profile__error-text`}>{nameError}</span>
                           <p className="profile__text">{currentUser.email}</p>
