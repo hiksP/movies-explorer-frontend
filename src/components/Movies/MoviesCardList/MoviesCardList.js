@@ -9,6 +9,7 @@ export default function MoviesCardList({cards, handleSave, handleRemove, savedMo
     setTimeout(displayWidthCheck, 1000)
   })
   const [saveSection, setSaveSection] = useState(false)
+  const [idArray, setIdArray] = useState([])
   const path = document.location.pathname;
 
   useEffect(() => {
@@ -18,6 +19,14 @@ export default function MoviesCardList({cards, handleSave, handleRemove, savedMo
       setSaveSection(false)
     }
   }, [])
+
+  useEffect(() => {
+    let idArray = []
+    savedMovies.forEach((el) => {
+      idArray.push(el.movieId);
+    })
+    setIdArray(idArray);
+  }, [savedMovies])
 
   const displayWidthCheck = () => {
     const display = window.innerWidth;
@@ -50,7 +59,7 @@ useEffect(() => {
         <section className="moviesCardList">
             <ul className="moviesCardList__list">
                 {cards.slice(0, counter).map((card) => {
-                  return <MoviesCard key={card.id || card._id} saveSection={saveSection} card={card} _id={card._id} handleSave={handleSave} handleRemove={handleRemove} savedMovies={savedMovies}></MoviesCard>
+                  return <MoviesCard key={card.id || card._id} saveSection={saveSection} card={card} _id={card._id} handleSave={handleSave} handleRemove={handleRemove} savedMovies={savedMovies} idArray={idArray}></MoviesCard>
                 })}
             </ul>
             <button className={!(cards.length < counter + 1) ? `moviesCardList__button` : `moviesCardList__button moviesCardList__button_unactive`} onClick={handlerShowPosts}>Ещё</button>

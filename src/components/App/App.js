@@ -155,8 +155,8 @@ export default function App() {
       const {country, director, duration, year, description, image, trailerLink, thumbnail, id, nameRU, nameEN} = card;
       mainApi.saveMoive(country, director, duration, year, description, `https://api.nomoreparties.co${card.image.url}`, trailerLink, thumbnail, id, nameRU, nameEN)
       .then((res) => {
-        console.log(res);
         setSavedMovies([res, ...savedMovies]);
+        localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
       })
       .catch((err) => {
         console.log(err);
@@ -168,6 +168,7 @@ export default function App() {
       .then((res) => {
         const lessMovies = savedMovies.filter((movie) => movie._id !== id);
         setSavedMovies(lessMovies);
+        localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
       })
       .catch((err) => {
         console.log(err);
@@ -176,20 +177,30 @@ export default function App() {
 
 
     useEffect(() => {
-        if(localShortMovies && Boolean(localStorage.getItem('onlyShort'))) {
-          console.log(localStorage.getItem('onlyShort'))
+        if(localShortMovies && Boolean(localStorage.getItem('onlyShort')) == true) {
           setOnlyShortMovies(true)
           setFoundMovies(localShortMovies)
         } else if(localStorage.getItem('allFoundMovies')){
+          setOnlyShortMovies(false)
           setNoMovies('')
           setFoundMovies(JSON.parse(localStorage.getItem('allFoundMovies')))
         }
+
+        if(JSON.parse(localStorage.getItem('savedMovies'))) {
+          setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')))
+        }
+
     }, [])
 
     const handlerShortMovies = () => {
       const allMoives = JSON.parse(localStorage.getItem('allFoundMovies'));
-      localStorage.setItem('onlyShort', !onlyShortMovies);
-      setOnlyShortMovies(!onlyShortMovies);
+      if(Boolean(onlyShortMovies) == false) {
+        setOnlyShortMovies(true)
+        localStorage.setItem('onlyShort', true);
+      } else {
+        setOnlyShortMovies(false)
+        localStorage.setItem('onlyShort', false);
+      }
 
       if(!onlyShortMovies) {
         setFoundMovies(localShortMovies);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function MoviesCard({saveSection, card, handleSave, handleRemove, savedMovies}) {
+export default function MoviesCard({saveSection, card, handleSave, handleRemove, savedMovies, idArray}) {
     // подсчет времени
 
     const duration = (time) => {
@@ -12,10 +12,15 @@ export default function MoviesCard({saveSection, card, handleSave, handleRemove,
     let movieDuration = duration(card.duration)
 
     const [isSaved, setIsSaved] = useState(false);
+    console.log(idArray);
 
     useEffect(() => {
       if(saveSection) {
         setIsSaved(true)
+      }
+
+      if(Array.from(idArray).includes(card.id)) {
+        setIsSaved(true);
       }
     }, [])
 
