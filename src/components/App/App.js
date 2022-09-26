@@ -129,12 +129,7 @@ export default function App() {
         return movie.duration <= 40
       })
 
-      const savedShortMovies = savedMovies.filter((movie) => {
-        return movie.nameRU.toLowerCase().includes(input.toLowerCase())
-      })
-
       localStorage.setItem('shortMovies', JSON.stringify(shortMovies));
-
 
       localStorage.setItem('allFoundMovies', JSON.stringify(foundMovies))
 
@@ -173,8 +168,17 @@ export default function App() {
         return movie.nameRU.toLowerCase().includes(input.toLowerCase())
       })
 
-      console.log(foundMovies);
-      setSavedMovies(foundMovies);
+      const savedShortMovies = foundMovies.filter((movie) => {
+        return movie.duration <= 40
+      })
+
+      localStorage.setItem('savedShortMovies', savedShortMovies)
+
+      if(onlyShortMovies) {
+        setSavedMovies(savedShortMovies)
+      } else {
+        setSavedMovies(foundMovies);
+      }
     }
 
     const handleRemove = (id) => {

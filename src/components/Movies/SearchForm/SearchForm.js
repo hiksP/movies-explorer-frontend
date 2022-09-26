@@ -20,7 +20,6 @@ export default function SearchForm({searchMovie, handlerShortMovies, shortMovies
     const submitForm = (e) => {
       e.preventDefault();
       searchMovie(movieInput);
-      console.log(movieInput);
     }
 
 
