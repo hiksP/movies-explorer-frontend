@@ -30,7 +30,7 @@ export default function Header({loggedIn}) {
                 <Link className="header__link" to={'/saved-movies'}><ul className="header__list-element">Сохранненые фильмы</ul></Link>
             </li>
         </div>
-        <BurgerMenu></BurgerMenu>
+        <BurgerMenu path={path}></BurgerMenu>
     </header>
     )
 }

@@ -21,7 +21,6 @@ export default function App() {
 
     // стейт логина
     const [loggedIn, setLoggedIn] = useState(false)
-    console.log(loggedIn);
 
     //данные в локальном хранилище
     const allMovies = JSON.parse(localStorage.getItem('allMovies'));
@@ -35,7 +34,6 @@ export default function App() {
 
     const [currentUser, setCurrentUser] = useState({})
     const [foundMovies, setFoundMovies] = useState([]);
-    const [allFoundMovies, setAllFoundMovies] = useState([]);
     const [isPreloaderActive, setPreloaderActive] = useState(false);
     const [noMovies, setNoMovies] = useState('');
     const [ savedMovies, setSavedMovies ] = useState([]);
@@ -110,6 +108,7 @@ export default function App() {
     const handleLogOut = () => {
       mainApi.signOut()
       .then((res) => {
+        localStorage.clear();
         navigate('/');
         setCurrentUser({});
         setLoggedIn(false);
@@ -129,6 +128,11 @@ export default function App() {
       const shortMovies = foundMovies.filter((movie) => {
         return movie.duration <= 40
       })
+
+      const savedShortMovies = savedMovies.filter((movie) => {
+        return movie.nameRU.toLowerCase().includes(input.toLowerCase())
+      })
+
       localStorage.setItem('shortMovies', JSON.stringify(shortMovies));
 
 
@@ -155,20 +159,30 @@ export default function App() {
       const {country, director, duration, year, description, image, trailerLink, thumbnail, id, nameRU, nameEN} = card;
       mainApi.saveMoive(country, director, duration, year, description, `https://api.nomoreparties.co${card.image.url}`, trailerLink, thumbnail, id, nameRU, nameEN)
       .then((res) => {
-        setSavedMovies([res, ...savedMovies]);
-        localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+        localStorage.setItem('savedMovies', JSON.stringify([res, ...savedMovies]));
+        setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')))
       })
       .catch((err) => {
         console.log(err);
       })
     }
 
+    const savedHandleSearch = (input) => {
+      const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+      const foundMovies = savedMovies.filter((movie) => {
+        return movie.nameRU.toLowerCase().includes(input.toLowerCase())
+      })
+
+      console.log(foundMovies);
+      setSavedMovies(foundMovies);
+    }
+
     const handleRemove = (id) => {
       mainApi.deleteMovie(id)
       .then((res) => {
         const lessMovies = savedMovies.filter((movie) => movie._id !== id);
-        setSavedMovies(lessMovies);
-        localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+        localStorage.setItem('savedMovies', JSON.stringify(lessMovies));
+        setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')));
       })
       .catch((err) => {
         console.log(err);
@@ -177,11 +191,11 @@ export default function App() {
 
 
     useEffect(() => {
-        if(localShortMovies && Boolean(localStorage.getItem('onlyShort')) == true) {
-          setOnlyShortMovies(true)
+      setOnlyShortMovies(localStorage.getItem('onlyShort') || false)
+
+        if(onlyShortMovies && localShortMovies) {
           setFoundMovies(localShortMovies)
         } else if(localStorage.getItem('allFoundMovies')){
-          setOnlyShortMovies(false)
           setNoMovies('')
           setFoundMovies(JSON.parse(localStorage.getItem('allFoundMovies')))
         }
@@ -193,27 +207,9 @@ export default function App() {
     }, [])
 
     const handlerShortMovies = () => {
-      const allMoives = JSON.parse(localStorage.getItem('allFoundMovies'));
-      if(Boolean(onlyShortMovies) == false) {
-        setOnlyShortMovies(true)
-        localStorage.setItem('onlyShort', true);
-      } else {
-        setOnlyShortMovies(false)
-        localStorage.setItem('onlyShort', false);
-      }
-
-      if(!onlyShortMovies) {
-        setFoundMovies(localShortMovies);
-      } else {
-        setFoundMovies(allMoives);
-      }
-
-      if(allMoives.length < 1) {
-        setNoMovies('Ничего нет!')
-      } else {
-        setNoMovies('')
-      }
-
+      const showOnlyShortMovies = !onlyShortMovies
+      setOnlyShortMovies(showOnlyShortMovies)
+      localStorage.setItem('onlyShort', showOnlyShortMovies)
     }
 
     return (
@@ -225,7 +221,7 @@ export default function App() {
             }/>
             <Route path="/movies" element={
               <ProtectedRoute
-              loggedIn={loggedIn}
+              loggedIn={true}
               component={
             <Movies searchMovie={handleSearch}
                 cards={foundMovies}
@@ -242,7 +238,7 @@ export default function App() {
               loggedIn={loggedIn}
               component={
                 <SavedMovies
-                searchMovie={handleSearch}
+                searchMovie={savedHandleSearch}
                 cards={savedMovies}
                 handleSave={handleSave}
                 preloader={isPreloaderActive}

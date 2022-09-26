@@ -12,7 +12,7 @@ export default function SavedMovies({cards, searchMovie, handleSave, preloader, 
             <Header></Header>
             <main>
               <SearchForm searchMovie={searchMovie} handlerShortMovies={handlerShortMovies} shortMovies={shortMovies}></SearchForm>
-              <MooviesCardList cards={cards} handleRemove={handleRemove} savedMovies={cards}></MooviesCardList>
+              <MooviesCardList cards={cards} handleRemove={handleRemove} savedMovies={savedMovies}></MooviesCardList>
               <Preloader foundmovies={cards} active={preloader} noMovies={noMovies}></Preloader>
             </main>
             <Footer></Footer>

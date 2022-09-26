@@ -5,6 +5,7 @@ export default function MoviesCardList({cards, handleSave, handleRemove, savedMo
 
   const [morePosts, setMorePosts] = useState(0)
   const [counter, addCounter] = useState(0);
+  const [shownMovies, setShownMovies] = useState([])
   window.addEventListener('resize', () => {
     setTimeout(displayWidthCheck, 1000)
   })
