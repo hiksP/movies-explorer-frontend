@@ -28,7 +28,7 @@ export default function App() {
 
 
     //переключатель короткометражек
-    const [onlyShortMovies, setOnlyShortMovies] = useState(false);
+    const [onlyShortMovies, setOnlyShortMovies] = useState(JSON.parse(localStorage.getItem('onlyShort')) || false);
 
     // стейт с данными пользователя
 
@@ -60,10 +60,8 @@ export default function App() {
           console.log(err);
           setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         })
-      } else {
-        JSON.parse(localStorage.getItem("allMovies"))
       }
-    }, [])
+    }, [loggedIn])
 
     // функция регистрации
     const handleRegister = ({name, email, password}) => {
@@ -120,6 +118,7 @@ export default function App() {
 
     // Функция поиска фильмов
     const handleSearch = (input) => {
+      const allMovies = JSON.parse(localStorage.getItem('allMovies'));
       setPreloaderActive(true);
         const foundMovies = allMovies.filter((movie) => {
           return movie.nameRU.toLowerCase().includes(input.toLowerCase())
@@ -195,8 +194,6 @@ export default function App() {
 
 
     useEffect(() => {
-      setOnlyShortMovies(localStorage.getItem('onlyShort') || false)
-
         if(onlyShortMovies && localShortMovies) {
           setFoundMovies(localShortMovies)
         } else if(localStorage.getItem('allFoundMovies')){
@@ -213,7 +210,7 @@ export default function App() {
     const handlerShortMovies = () => {
       const showOnlyShortMovies = !onlyShortMovies
       setOnlyShortMovies(showOnlyShortMovies)
-      localStorage.setItem('onlyShort', showOnlyShortMovies)
+      localStorage.setItem('onlyShort', JSON.stringify(showOnlyShortMovies))
     }
 
     return (
