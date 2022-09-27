@@ -3,7 +3,7 @@ import Welcome from "../Welcome/Welcome";
 import { Link, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
-export default function Login({onLogin}) {
+export default function Login({onLogin, error}) {
 
     // стейты инпутов
     const [email, setEmail] = useState('');
@@ -94,6 +94,7 @@ export default function Login({onLogin}) {
                               <span className={passwordDirty && passwordError ? `login__error-text login__error-text_active` : `login__error-text`}>{passwordError}</span>
                           </li>
                       </ul>
+                      <p className={error ? `login__error-text login__error-text_active` : `login__error-text`}>{error}</p>
                       <button disabled={!formValid} className={!formValid ? `login__button login__button_disabled` : `login__button`} type="submit">Войти</button>
                   </form>
                   <p className="login__text">Еще не зарегестрированы?

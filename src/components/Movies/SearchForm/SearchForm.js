@@ -11,10 +11,11 @@ export default function SearchForm({searchMovie, handlerShortMovies, shortMovies
         SetWidth(windowInnerWidth)
     })
 
-    const [movieInput, setMovieInput] = useState('')
+    const [movieInput, setMovieInput] = useState(localStorage.getItem('input') ||'')
 
     const inputHandler = (e) => {
       setMovieInput(e.target.value);
+      localStorage.setItem('input', e.target.value);
     }
 
     const submitForm = (e) => {

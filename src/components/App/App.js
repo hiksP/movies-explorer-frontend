@@ -20,10 +20,9 @@ export default function App() {
     const navigate = useNavigate();
 
     // стейт логина
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem('logged')) || false)
 
     //данные в локальном хранилище
-    const allMovies = JSON.parse(localStorage.getItem('allMovies'));
     const localShortMovies = JSON.parse(localStorage.getItem('shortMovies'));
 
 
@@ -39,11 +38,18 @@ export default function App() {
     const [ savedMovies, setSavedMovies ] = useState([]);
     const [registerError, setRegisterError] = useState('');
 
+    useEffect(() => {
+      if(JSON.parse(localStorage.getItem('logged'))) {
+        setLoggedIn(true)
+      }
+    }, [])
+
       useEffect(() => {
       mainApi.getMe()
       .then((res) => {
         setLoggedIn(true)
         setCurrentUser(res);
+        JSON.stringify(localStorage.setItem('logged', true))
       })
       .catch((err) => {
         console.log(err)
@@ -57,11 +63,11 @@ export default function App() {
           localStorage.setItem('allMovies', JSON.stringify(movies))
         })
         .catch((err) => {
-          console.log(err);
           setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         })
       }
     }, [loggedIn])
+
 
     // функция регистрации
     const handleRegister = ({name, email, password}) => {
@@ -74,9 +80,7 @@ export default function App() {
         })
       })
       .catch((err) => {
-        if(err === 'Ошибка 409') {
-          setRegisterError('Такой пользователь уже зарегестрирован')
-        } else setRegisterError(err);
+        err === 'Ошибка 409' ? setRegisterError('Такой пользователь уже зарегестрирован') : setRegisterError(err)
       })
     }
 
@@ -88,7 +92,7 @@ export default function App() {
         navigate('/movies');
       })
       .catch((err) => {
-        console.log(err);
+        err === 'Ошибка 401' ? setRegisterError("Неправильные почта или пароль") : setRegisterError(err)
       })
     }
 
@@ -99,7 +103,7 @@ export default function App() {
         setCurrentUser(res)
       })
       .catch((err) => {
-        console.log(err)
+        setRegisterError(err)
       })
     }
 
@@ -110,9 +114,10 @@ export default function App() {
         navigate('/');
         setCurrentUser({});
         setLoggedIn(false);
+        JSON.stringify(localStorage.setItem('logged', false))
       })
       .catch((err) => {
-        console.log(err);
+        setRegisterError(err);
       })
     }
 
@@ -157,7 +162,7 @@ export default function App() {
         setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')))
       })
       .catch((err) => {
-        console.log(err);
+        alert(err)
       })
     }
 
@@ -188,7 +193,7 @@ export default function App() {
         setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')));
       })
       .catch((err) => {
-        console.log(err);
+        alert(err)
       })
     }
 
@@ -222,7 +227,7 @@ export default function App() {
             }/>
             <Route path="/movies" element={
               <ProtectedRoute
-              loggedIn={true}
+              loggedIn={loggedIn}
               component={
             <Movies searchMovie={handleSearch}
                 cards={foundMovies}
@@ -260,7 +265,7 @@ export default function App() {
               }/>
             }/>
             <Route path="/signin" element={
-              <Login onLogin={handleLogin}></Login>
+              <Login onLogin={handleLogin} error={registerError}></Login>
             }/>
             <Route path="/signup" element={
               <Register register={handleRegister} error={registerError}></Register>
