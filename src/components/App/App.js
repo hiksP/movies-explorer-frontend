@@ -16,6 +16,7 @@ import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute.js";
 export default function App() {
 
     document.documentElement.lang = 'ru'
+    const path = document.location.pathname;
 
     const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ export default function App() {
 
     //переключатель короткометражек
     const [onlyShortMovies, setOnlyShortMovies] = useState(JSON.parse(localStorage.getItem('onlyShort')) || false);
+    const [savedOnlyShortMovies, setSavedOnlyShortMovies] = useState(JSON.parse(localStorage.getItem('savedOnlyShort')) || false);
 
     // стейт с данными пользователя
 
@@ -213,9 +215,15 @@ export default function App() {
     }, [])
 
     const handlerShortMovies = () => {
-      const showOnlyShortMovies = !onlyShortMovies
-      setOnlyShortMovies(showOnlyShortMovies)
-      localStorage.setItem('onlyShort', JSON.stringify(showOnlyShortMovies))
+      if(path === '/movies') {
+        const showOnlyShortMovies = !onlyShortMovies
+        setOnlyShortMovies(showOnlyShortMovies)
+        localStorage.setItem('onlyShort', JSON.stringify(showOnlyShortMovies));
+      } else {
+        const showOnlyShortMovies = !savedOnlyShortMovies
+        setSavedOnlyShortMovies(showOnlyShortMovies)
+        localStorage.setItem('savedOnlyShort', JSON.stringify(showOnlyShortMovies));
+      }
     }
 
     return (
@@ -250,7 +258,7 @@ export default function App() {
                 preloader={isPreloaderActive}
                 noMovies={noMovies}
                 handlerShortMovies={handlerShortMovies}
-                shortMovies={onlyShortMovies}
+                shortMovies={savedOnlyShortMovies}
                 handleRemove={handleRemove}
                 savedMovies={savedMovies}></SavedMovies>
               }/>

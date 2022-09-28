@@ -5,17 +5,18 @@ import search from "../../../images/search-icon.svg"
 
 export default function SearchForm({searchMovie, handlerShortMovies, shortMovies}) {
     const [width, SetWidth] = useState(window.outerWidth);
+    const path = document.location.pathname;
 
     window.addEventListener('resize', () => {
         const windowInnerWidth = window.innerWidth
         SetWidth(windowInnerWidth)
     })
 
-    const [movieInput, setMovieInput] = useState(localStorage.getItem('input') ||'')
+    const [movieInput, setMovieInput] = useState(path === '/movies' ? localStorage.getItem('input') || '' : localStorage.getItem('savedInput') || '')
 
     const inputHandler = (e) => {
       setMovieInput(e.target.value);
-      localStorage.setItem('input', e.target.value);
+      path === '/movies' ? localStorage.setItem('input', e.target.value) : localStorage.setItem('savedInput', e.target.value);
     }
 
     const submitForm = (e) => {
