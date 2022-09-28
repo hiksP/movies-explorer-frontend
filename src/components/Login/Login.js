@@ -90,7 +90,7 @@ export default function Login({onLogin, error}) {
                           </li>
                           <li className="login__item">
                               <p className="login__input-text">Пароль </p>
-                              <input value={password} name='password' onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} className={passwordDirty && passwordError ? `login__input login__input_error` : `login__input`} required={true}></input>
+                              <input value={password} type='password' name='password' onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} className={passwordDirty && passwordError ? `login__input login__input_error` : `login__input`} required={true}></input>
                               <span className={passwordDirty && passwordError ? `login__error-text login__error-text_active` : `login__error-text`}>{passwordError}</span>
                           </li>
                       </ul>

@@ -106,7 +106,7 @@ export default function Register({register, error}) {
                           </li>
                           <li className='login__item'>
                               <p className="login__input-text">Пароль </p>
-                              <input required={true} name='password' value={password} onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} className={passwordDirty && passwordError ? `login__input login__input_error` : `login__input`}></input>
+                              <input required={true} name='password' type='password' value={password} onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} className={passwordDirty && passwordError ? `login__input login__input_error` : `login__input`}></input>
                               <span className={passwordDirty && passwordError ? `login__error-text login__error-text_active` : `login__error-text`}>{passwordError}</span>
                           </li>
                       </ul>

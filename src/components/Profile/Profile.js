@@ -7,14 +7,22 @@ export default function Profile({getInfo, logOut}) {
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState(localStorage.getItem('userEmail'));
+  const [name, setName] = useState(localStorage.getItem('userName'));
   const [emailDirty, isEmailDirty] = useState(false);
   const [nameDirty, isNameDirty] = useState(false);
-  const [emailError, setEmailError] = useState('Емейл не может быть пустым');
-  const [nameError, setNameError] = useState('Имя не может быть пустым');
+  const [emailError, setEmailError] = useState('');
+  const [nameError, setNameError] = useState('');
   const [formValid, setFormValid] = useState(false);
   const [sameDataError, setSameDateError] = useState('');
+
+  const infoChecker = () => {
+    if((nameDirty || emailDirty) && (name === currentUser.name && email === currentUser.email)) {
+      setSameDateError('Данные должны отличаться от предыдущих!')
+    } else {
+      setSameDateError('');
+    }
+  }
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -22,6 +30,8 @@ export default function Profile({getInfo, logOut}) {
     if(!re.test(String(e.target.value).toLowerCase())) {
       isEmailDirty(true);
       setEmailError('Некорректный емейл');
+    } else if(e.target.value === '') {
+      setEmailError('Email не может быть пустым')
     } else {
       setEmailError('');
     }
@@ -54,14 +64,6 @@ export default function Profile({getInfo, logOut}) {
     getInfo(name, email);
   }
 
-  const infoChecker = () => {
-    if(name === currentUser.name && email === currentUser.email) {
-      setSameDateError('Данные должны отличаться от предыдущих!')
-    } else {
-      setSameDateError('');
-    }
-  }
-
   useEffect(() => {
     infoChecker()
   }, [name, email])
@@ -79,13 +81,13 @@ export default function Profile({getInfo, logOut}) {
             <Header/>
             <main>
               <section className="profile">
-                  <h1 className="profile__title">{`Привет, ` + `${currentUser.name}`}</h1>
+                  <h1 className="profile__title">{`Привет, ` + `${currentUser.name || localStorage.getItem('userName')}`}</h1>
                   <form className="profile__form">
                       <ul className="profile__list">
-                          <p className="profile__text">{currentUser.name || ''}</p>
+                          <p className="profile__text">Имя</p>
                           <input value={name} name='name' onBlur={(e) => blurHandler(e)} onChange={(e) => nameHandler(e)} className="profile__input"></input>
                           <span className={nameDirty && nameError ? `profile__error-text profile__error-text_active` : `profile__error-text`}>{nameError}</span>
-                          <p className="profile__text">{currentUser.email}</p>
+                          <p className="profile__text">Email</p>
                           <input value={email} name='email' onBlur={(e) => blurHandler(e)} onChange={(e) => emailHandler(e)} className="profile__input"></input>
                           <span className={emailDirty && emailError || sameDataError ? `profile__error-text profile__error-text_active` : `profile__error-text`}>{emailError || sameDataError}</span>
                       </ul>

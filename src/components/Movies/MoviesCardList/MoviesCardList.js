@@ -19,14 +19,6 @@ export default function MoviesCardList({cards, handleSave, handleRemove, savedMo
     }
   }, [])
 
-  useEffect(() => {
-    let idArray = []
-    savedMovies.forEach((el) => {
-      idArray.push(el.movieId);
-    })
-    idArray.length > 0 ? localStorage.setItem('idArray', idArray) : ''
-  }, [savedMovies])
-
   const displayWidthCheck = () => {
     const display = window.innerWidth;
     if(display > 1900) {

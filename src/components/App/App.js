@@ -51,12 +51,15 @@ export default function App() {
       .then((res) => {
         setLoggedIn(true)
         setCurrentUser(res);
+        localStorage.setItem('userName', res.name);
+        localStorage.setItem('userEmail', res.email);
         JSON.stringify(localStorage.setItem('logged', true))
       })
       .catch((err) => {
         console.log(err)
       })
     }, [loggedIn])
+
 
     useEffect(() => {
       if(!localStorage.getItem('allMovies')) {
@@ -115,6 +118,8 @@ export default function App() {
         localStorage.clear();
         navigate('/');
         setCurrentUser({});
+        setFoundMovies([])
+        setSavedMovies([])
         setLoggedIn(false);
         JSON.stringify(localStorage.setItem('logged', false))
       })
@@ -212,7 +217,8 @@ export default function App() {
           setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')))
         }
 
-    }, [navigate])
+    }, [navigate, onlyShortMovies])
+
 
     const handlerShortMovies = () => {
       if(path === '/movies') {

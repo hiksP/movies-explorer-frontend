@@ -14,22 +14,16 @@ export default function MoviesCard({saveSection, card, handleSave, handleRemove,
     const [isSaved, setIsSaved] = useState(false);
 
 
-    useEffect(() => {
-      if(saveSection) {
-        setIsSaved(true)
-      }
-
-      if(localStorage.getItem('idArray').split(',').map(Number).includes(card.id)) {
-        setIsSaved(true);
-      }
-    }, [])
-
-
     // сохранение фильма
 
-    const saveHandler = (e) => {
+    const saveHandler = () => {
       if(isSaved) {
-        alert('Карточка уже сохранена')
+        savedMovies.some((item) => {
+          if(item.movieId === card.id) {
+            handleRemove(item._id)
+            setIsSaved(!isSaved)
+          }
+        })
       } else {
         setIsSaved(!isSaved)
         handleSave(card);
@@ -47,6 +41,19 @@ export default function MoviesCard({saveSection, card, handleSave, handleRemove,
       handleRemove(id);
       setIsSaved(!isSaved)
     }
+
+    useEffect(() => {
+      if(saveSection) {
+        setIsSaved(true)
+      }
+
+      savedMovies.forEach((el) => {
+        if(el.movieId === card.id) {
+          setIsSaved(true)
+        }
+      })
+
+    }, [savedMovies])
 
     // определение класса для кнопки в завимсимости от странцы
     const saveButton = !saveSection ? 'active' : 'saved'
