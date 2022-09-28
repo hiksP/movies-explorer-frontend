@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function MoviesCard({saveSection, card, handleSave, handleRemove, savedMovies, idArray}) {
+export default function MoviesCard({saveSection, card, handleSave, handleRemove, savedMovies}) {
     // подсчет времени
 
     const duration = (time) => {
@@ -13,12 +13,13 @@ export default function MoviesCard({saveSection, card, handleSave, handleRemove,
 
     const [isSaved, setIsSaved] = useState(false);
 
+
     useEffect(() => {
       if(saveSection) {
         setIsSaved(true)
       }
 
-      if(Array.from(idArray).includes(card.id)) {
+      if(localStorage.getItem('idArray').split(',').map(Number).includes(card.id)) {
         setIsSaved(true);
       }
     }, [])
@@ -28,7 +29,7 @@ export default function MoviesCard({saveSection, card, handleSave, handleRemove,
 
     const saveHandler = (e) => {
       if(isSaved) {
-        console.log('Карточка уже сохранена')
+        alert('Карточка уже сохранена')
       } else {
         setIsSaved(!isSaved)
         handleSave(card);

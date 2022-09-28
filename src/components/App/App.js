@@ -212,7 +212,7 @@ export default function App() {
           setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')))
         }
 
-    }, [])
+    }, [navigate])
 
     const handlerShortMovies = () => {
       if(path === '/movies') {
