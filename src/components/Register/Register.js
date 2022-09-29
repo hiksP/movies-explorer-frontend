@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Welcome from '../Welcome/Welcome';
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Register({register, error}) {
+export default function Register({loggedIn, register, error}) {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if(loggedIn) {
+        navigate('/')
+      }
+    }, [])
+
 
     //стейты инпутов
     const [email, setEmail] = useState('');

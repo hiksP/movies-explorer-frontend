@@ -12,7 +12,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import {moviesApi} from '../../utils/MoviesApi';
 import {ProtectedRoute} from "../ProtectedRoute/ProtectedRoute.js";
 
-
 export default function App() {
 
     document.documentElement.lang = 'ru'
@@ -40,6 +39,14 @@ export default function App() {
     const [ savedMovies, setSavedMovies ] = useState([]);
     const [registerError, setRegisterError] = useState('');
 
+    const serverError = (err) => {
+      alert(err)
+      setLoggedIn(false)
+      setCurrentUser({})
+      localStorage.clear()
+      navigate('/')
+    }
+
     useEffect(() => {
       if(JSON.parse(localStorage.getItem('logged'))) {
         setLoggedIn(true)
@@ -56,19 +63,37 @@ export default function App() {
         JSON.stringify(localStorage.setItem('logged', true))
       })
       .catch((err) => {
-        console.log(err)
+        if(err === 'Ошибка 500') {
+          serverError('Произошла ошибка, авторизируйтесь повторно')
+        }
       })
+
+      if(loggedIn) {
+        mainApi.getSavedMovies()
+        .then((res) => {
+          const cards = res;
+          setSavedMovies(cards);
+        })
+        .catch((err) => {
+          if(err === 'Ошибка 500') {
+            serverError('Произошла ошибка, Авторизируйтесь повторно')
+          } else alert(err)
+        })
+      }
     }, [loggedIn])
 
-
     useEffect(() => {
-      if(!localStorage.getItem('allMovies')) {
+      if(loggedIn) {
         moviesApi.getInfo()
         .then((movies) => {
           localStorage.setItem('allMovies', JSON.stringify(movies))
         })
         .catch((err) => {
-          setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+          if(err === 'Ошибка 500') {
+            serverError('Произошла ошибка, Авторизируйтесь повторно')
+          } else {
+            setNoMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+          }
         })
       }
     }, [loggedIn])
@@ -108,7 +133,11 @@ export default function App() {
         setCurrentUser(res)
       })
       .catch((err) => {
-        setRegisterError(err)
+        if(err === 'Ошибка 500') {
+          serverError('Произошла ошибка, Авторизируйтесь повторно')
+        } else {
+          setRegisterError(err)
+        }
       })
     }
 
@@ -124,7 +153,11 @@ export default function App() {
         JSON.stringify(localStorage.setItem('logged', false))
       })
       .catch((err) => {
-        setRegisterError(err);
+        if(err === 'Ошибка 500') {
+          serverError('Произошла ошибка, Авторизируйтесь повторно')
+        } {
+          setRegisterError(err);
+        }
       })
     }
 
@@ -169,7 +202,9 @@ export default function App() {
         setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')))
       })
       .catch((err) => {
-        alert(err)
+        if(err === 'Ошибка 500') {
+          serverError('Произошла ошибка, Авторизируйтесь повторно')
+        } else alert(err);
       })
     }
 
@@ -200,7 +235,9 @@ export default function App() {
         setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')));
       })
       .catch((err) => {
-        alert(err)
+        if(err === 'Ошибка 500') {
+          serverError('Произошла ошибка, Авторизируйтесь повторно')
+        } else alert(err)
       })
     }
 
@@ -279,10 +316,10 @@ export default function App() {
               }/>
             }/>
             <Route path="/signin" element={
-              <Login onLogin={handleLogin} error={registerError}></Login>
+              <Login loggedIn={loggedIn} onLogin={handleLogin} error={registerError}></Login>
             }/>
             <Route path="/signup" element={
-              <Register register={handleRegister} error={registerError}></Register>
+              <Register loggedIn={loggedIn} register={handleRegister} error={registerError}></Register>
             }/>
             <Route path="*" element={
               <NotFoundPage></NotFoundPage>
