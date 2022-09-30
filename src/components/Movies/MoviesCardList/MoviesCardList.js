@@ -49,7 +49,7 @@ useEffect(() => {
   }
 
   const button = !saveSection ? <button className={!(cards.length < counter + 1) ? `moviesCardList__button` : `moviesCardList__button moviesCardList__button_unactive`} onClick={handlerShowPosts}>Ещё</button> : <></>
-  const slcie = !saveSection ? counter : -1
+  const slcie = !saveSection ? counter : cards.length
 
 
     return (
