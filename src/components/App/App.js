@@ -39,6 +39,11 @@ export default function App() {
     const [ savedMovies, setSavedMovies ] = useState([]);
     const [registerError, setRegisterError] = useState('');
 
+    // очистка предыдущих ошибок(для навигации)
+    useEffect(() => {
+      setRegisterError('')
+    }, [navigate])
+
     const serverError = (err) => {
       alert(err)
       setLoggedIn(false)
@@ -60,6 +65,7 @@ export default function App() {
         setCurrentUser(res);
         localStorage.setItem('userName', res.name);
         localStorage.setItem('userEmail', res.email);
+        localStorage.setItem('id', res.id);
         JSON.stringify(localStorage.setItem('logged', true))
       })
       .catch((err) => {
@@ -71,7 +77,9 @@ export default function App() {
       if(loggedIn) {
         mainApi.getSavedMovies()
         .then((res) => {
-          const cards = res;
+          const cards = res.filter((card) => {
+            return card.owner === localStorage.getItem('id')
+          });
           setSavedMovies(cards);
         })
         .catch((err) => {
