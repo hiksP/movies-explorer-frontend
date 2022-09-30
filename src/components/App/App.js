@@ -196,7 +196,7 @@ export default function App() {
       if (!onlyShortMovies && foundMovies.length < 1) {
         setNoMovies('Ничего не найдено');
       } else if(onlyShortMovies && shortMovies.length < 1) {
-        setNoMovies('Короткомтеражке нет')
+        setNoMovies('Короткомтеражек нет')
       }
 
       setPreloaderActive(false);

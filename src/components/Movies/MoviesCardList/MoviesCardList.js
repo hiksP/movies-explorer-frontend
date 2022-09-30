@@ -43,6 +43,7 @@ useEffect(() => {
     displayWidthCheck();
 }, []);
 
+
   const handlerShowPosts = () => {
     addCounter(counter + morePosts);
   }
