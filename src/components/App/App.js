@@ -293,7 +293,6 @@ export default function App() {
 
     }, [navigate, onlyShortMovies])
 
-
     const handlerShortMovies = () => {
       if(path === '/movies') {
         const showOnlyShortMovies = !onlyShortMovies
