@@ -229,7 +229,7 @@ export default function App() {
 
       if(foundMovies.length === 0) {
         setNoMovies('Ничего не найедно')
-        setSavedMovies(foundMovies)
+        setSavedMovies([])
         return
       }
 
@@ -238,15 +238,16 @@ export default function App() {
         return movie.duration <= 40
       })
 
-      if(savedOnlyShortMovies && savedShortMovies.length === 0) {
+      localStorage.setItem('savedShortMovies', JSON.stringify(savedShortMovies))
+
+      if(savedOnlyShortMovies && JSON.parse(localStorage.getItem('savedShortMovies')).length === 0) {
         setNoMovies('Короткометражек нет!')
-        setSavedMovies(savedShortMovies)
+        setSavedMovies([])
         return
       }
 
-      localStorage.setItem('savedShortMovies', savedShortMovies)
 
-      if(onlyShortMovies) {
+      if(savedOnlyShortMovies) {
         setSavedMovies(savedShortMovies)
         setNoMovies('')
       } else {
@@ -258,9 +259,16 @@ export default function App() {
     const handleRemove = (id) => {
       mainApi.deleteMovie(id)
       .then((res) => {
-        const lessMovies = savedMovies.filter((movie) => movie._id !== id);
+        const lessMovies = JSON.parse(localStorage.getItem('savedMovies')).filter((movie) => movie._id !== id);
         localStorage.setItem('savedMovies', JSON.stringify(lessMovies));
-        setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')));
+        if(savedOnlyShortMovies) {
+          const lessShortMovies = JSON.parse(localStorage.getItem('savedMovies')).filter((movie) => {
+            return movie.duration <= 40
+          })
+          setSavedMovies(lessShortMovies)
+        } else {
+          setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')));
+        }
       })
       .catch((err) => {
         if(err === 'Ошибка 500') {
@@ -279,6 +287,7 @@ export default function App() {
         }
 
         if(JSON.parse(localStorage.getItem('savedMovies'))) {
+          setSavedOnlyShortMovies(false)
           setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')))
         }
 

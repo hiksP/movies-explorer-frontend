@@ -83,6 +83,7 @@ export default function Profile({getInfo, logOut}) {
     infoChecker()
   }, [name, email, nameDirty, emailDirty])
 
+
   useEffect(() => {
     if ( nameError || emailError || sameDataError ) {
       setFormValid(false)
