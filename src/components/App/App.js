@@ -289,6 +289,7 @@ export default function App() {
         if(JSON.parse(localStorage.getItem('savedMovies'))) {
           setSavedOnlyShortMovies(false)
           setSavedMovies(JSON.parse(localStorage.getItem('savedMovies')))
+          setNoMovies('')
         }
 
     }, [navigate, onlyShortMovies])
