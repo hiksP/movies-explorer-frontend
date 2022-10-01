@@ -12,11 +12,11 @@ export default function SearchForm({searchMovie, handlerShortMovies, shortMovies
         SetWidth(windowInnerWidth)
     })
 
-    const [movieInput, setMovieInput] = useState(path === '/movies' ? localStorage.getItem('input') || '' : localStorage.getItem('savedInput') || '')
+    const [movieInput, setMovieInput] = useState(path === '/movies' ? localStorage.getItem('input') || '' : '')
 
     const inputHandler = (e) => {
       setMovieInput(e.target.value);
-      path === '/movies' ? localStorage.setItem('input', e.target.value) : localStorage.setItem('savedInput', e.target.value);
+      path === '/movies' ? localStorage.setItem('input', e.target.value) : '';
     }
 
     const submitForm = (e) => {

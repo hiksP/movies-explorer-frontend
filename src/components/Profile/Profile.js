@@ -7,8 +7,8 @@ export default function Profile({getInfo, logOut}) {
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [email, setEmail] = useState(localStorage.getItem('userEmail'));
-  const [name, setName] = useState(localStorage.getItem('userName'));
+  const [email, setEmail] = useState(currentUser.email || localStorage.getItem('userEmail'));
+  const [name, setName] = useState(currentUser.name || localStorage.getItem('userName'));
   const [emailDirty, isEmailDirty] = useState(false);
   const [nameDirty, isNameDirty] = useState(false);
   const [emailError, setEmailError] = useState('');
@@ -17,10 +17,18 @@ export default function Profile({getInfo, logOut}) {
   const [sameDataError, setSameDateError] = useState('');
 
   const infoChecker = () => {
-    if((nameDirty || emailDirty) && (name === currentUser.name && email === currentUser.email)) {
+    if((nameDirty && emailDirty) && (name === currentUser.name && email === currentUser.email)) {
       setSameDateError('Данные должны отличаться от предыдущих!')
+      return false
+    }
+
+    if(name === currentUser.name && email === currentUser.email) {
+      setSameDateError('Данные должны отличаться от предыдущих!')
+      return false
     } else {
       setSameDateError('');
+      setFormValid(true);
+      return true
     }
   }
 
@@ -50,7 +58,11 @@ export default function Profile({getInfo, logOut}) {
 
   const nameHandler = (e) => {
     setName(e.target.value);
-    if(e.target.value === '') {
+    const re = /[a-zA-Zа-яА-Я]+$/i
+    if(!re.test(String(e.target.value).toLowerCase())) {
+      isNameDirty(true);
+      setNameError('Имя должно состоять только из латиницы, кириллицы, допускается использовать пробел или дефис.')
+    } else if(e.target.value === '') {
       isNameDirty(true);
       setNameError('Имя не может быть пустым');
     } else {
@@ -60,13 +72,16 @@ export default function Profile({getInfo, logOut}) {
 
   const changeInfo = (e) => {
     e.preventDefault();
-
-    getInfo(name, email);
+    if(infoChecker()) {
+      getInfo(name, email);
+      localStorage.setItem('userName', name);
+      localStorage.setItem('userEmail', email);
+    }
   }
 
   useEffect(() => {
     infoChecker()
-  }, [name, email])
+  }, [name, email, nameDirty, emailDirty])
 
   useEffect(() => {
     if ( nameError || emailError || sameDataError ) {
@@ -75,6 +90,11 @@ export default function Profile({getInfo, logOut}) {
       setFormValid(true);
     }
   }, [nameError, emailError, sameDataError])
+
+  useEffect(() => {
+    setFormValid(false)
+    setSameDateError('')
+  }, [])
 
     return(
         <>

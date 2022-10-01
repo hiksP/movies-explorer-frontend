@@ -81,6 +81,7 @@ export default function App() {
             return card.owner === localStorage.getItem('id')
           });
           setSavedMovies(cards);
+          localStorage.setItem('savedMovies', JSON.stringify(cards))
         })
         .catch((err) => {
           if(err === 'Ошибка 500') {
@@ -111,8 +112,12 @@ export default function App() {
     const handleRegister = ({name, email, password}) => {
       mainApi.signUp(name, email, password)
       .then((res) => {
-        mainApi.signIn(email, password)
+        mainApi.signIn(res.email, password)
         .then((res) => {
+          setCurrentUser({
+            name,
+            email
+          })
           setLoggedIn(true);
           navigate('/movies');
         })
@@ -217,21 +222,36 @@ export default function App() {
     }
 
     const savedHandleSearch = (input) => {
-      const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+      const savedMovies = JSON.parse(localStorage.getItem('savedMovies'))
       const foundMovies = savedMovies.filter((movie) => {
         return movie.nameRU.toLowerCase().includes(input.toLowerCase())
       })
+
+      if(foundMovies.length === 0) {
+        setNoMovies('Ничего не найедно')
+        setSavedMovies(foundMovies)
+        return
+      }
+
 
       const savedShortMovies = foundMovies.filter((movie) => {
         return movie.duration <= 40
       })
 
+      if(savedOnlyShortMovies && savedShortMovies.length === 0) {
+        setNoMovies('Короткометражек нет!')
+        setSavedMovies(savedShortMovies)
+        return
+      }
+
       localStorage.setItem('savedShortMovies', savedShortMovies)
 
       if(onlyShortMovies) {
         setSavedMovies(savedShortMovies)
+        setNoMovies('')
       } else {
         setSavedMovies(foundMovies);
+        setNoMovies('')
       }
     }
 
