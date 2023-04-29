@@ -1,0 +1,9 @@
+.profile__button_disabled {
+  color: red;
+  transition: none;
+}
+
+.profile__button_disabled:hover {
+  cursor: default;
+  opacity: 1;
+}

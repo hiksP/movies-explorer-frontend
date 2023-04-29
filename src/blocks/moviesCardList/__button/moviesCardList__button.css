@@ -1,0 +1,38 @@
+.moviesCardList__button {
+  max-width: calc(100% - 140px);
+  width: 100%;
+  height: 36px;
+  background-color: #F4F4F4;
+  border: 1px solid #F4F4F4;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  transition: ease-in .4s opacity;
+  align-self: flex-end;
+  margin-top: 35px;
+}
+
+.moviesCardList__button:hover {
+  opacity: .4;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1281px) {
+  .moviesCardList__button {
+      font-size: 12px;
+      line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .moviesCardList__button {
+      max-width: calc(100% - 60px);
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .moviesCardList__button {
+      max-width: calc(100% - 20px);
+  }
+}

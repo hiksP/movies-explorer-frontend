@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import icon from "../../images/profile_icon.svg";
 import { useState } from "react";
 
-export default function BurgerMenu() {
+export default function BurgerMenu({path}) {
 
     const [width, SetWidth] = useState(window.outerWidth);
 
     window.addEventListener('resize', () => {
+      setTimeout(() => {
         const windowInnerWidth = window.innerWidth
         SetWidth(windowInnerWidth)
+      }, 1000)
     })
 
     const [menuActive, setMenuActive] = useState(false)
@@ -27,9 +29,9 @@ export default function BurgerMenu() {
             <div className={menuActive ? "burger__content burger__content_active" : "burger__content"}>
                 <button type="button" className="burger__close-button" onClick={openMenu}></button>
                 <ul className="burger__list">
-                    <Link className="burger__link" to={'/'}><li className="burger__item">Главная</li></Link>
-                    <Link className="burger__link" to={'/movies'}><li className="burger__item burger__item_active">Фильмы</li></Link>
-                    <Link className="burger__link" to={'/saved-movies'}><li className="burger__item">Сохранённые фильмы</li></Link>
+                    <Link className="burger__link" to={'/'}><li className={path === '/' ? `burger__item burger__item_active` : `burger__item`}>Главная</li></Link>
+                    <Link className="burger__link" to={'/movies'}><li className={path === '/movies' ? `burger__item burger__item_active` : `burger__item`}>Фильмы</li></Link>
+                    <Link className="burger__link" to={'/saved-movies'}><li className={path ==='/saved-movies' ? `burger__item burger__item_active` : `burger__item`}>Сохранённые фильмы</li></Link>
                 </ul>
                 <div className="burger__profile">
                     <Link to={'/profile'} className="burger__link">Аккаунт</Link>

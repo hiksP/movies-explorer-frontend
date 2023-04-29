@@ -6,14 +6,17 @@ import MoviesCard from "./MoviesCard/MoviesCard";
 import Preloader from "./Preloader/Preloader";
 import Footer from "../Footer/Footer";
 
-export default function Movies() {
+
+
+export default function Movies({searchMovie, cards, handleSave, preloader, noMovies, handleRemove, savedMovies, handlerShortMovies, shortMovies}) {
+
     return (
         <>
             <Header></Header>
             <main>
-              <SearchForm></SearchForm>
-              <MoviesCardList savedMovies={false}></MoviesCardList>
-              <Preloader></Preloader>
+              <SearchForm searchMovie={searchMovie} handlerShortMovies={handlerShortMovies} shortMovies={shortMovies}></SearchForm>
+              <MoviesCardList cards={cards} handleSave={handleSave} handleRemove={handleRemove} savedMovies={savedMovies}></MoviesCardList>
+              <Preloader active={preloader} noMovies={noMovies}></Preloader>
             </main>
             <Footer></Footer>
         </>
