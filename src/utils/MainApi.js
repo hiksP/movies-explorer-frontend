@@ -1,13 +1,13 @@
 class MainApi {
-  constructor({baseUrl}) {
-      this._baseUrl = baseUrl;
+  constructor({ baseUrl }) {
+    this._baseUrl = baseUrl;
   }
 
   _getResponseData(res) {
-      if (!res.ok) {
-          return Promise.reject(`Ошибка ${res.status}`)
-      }
-      return res.json();
+    if (!res.ok) {
+      return Promise.reject(`Ошибка ${res.status}`);
+    }
+    return res.json();
   }
 
   signUp(name, email, password) {
@@ -15,10 +15,10 @@ class MainApi {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({name, email, password})
-    }).then((res) => this._getResponseData(res))
+      body: JSON.stringify({ name, email, password }),
+    }).then((res) => this._getResponseData(res));
   }
 
   signIn(email, password) {
@@ -29,8 +29,8 @@ class MainApi {
         "Access-Control-Expose-Headers": "Set-Cookie",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({email, password})
-    }).then((res) => this._getResponseData(res))
+      body: JSON.stringify({ email, password }),
+    }).then((res) => this._getResponseData(res));
   }
 
   signOut() {
@@ -38,44 +38,55 @@ class MainApi {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
     }).then((res) => {
-      if(!res.ok) {
-        return Promise.reject(`Ошибка ${res.status}`)
+      if (!res.ok) {
+        return Promise.reject(`Ошибка ${res.status}`);
       } else return res;
-    })
+    });
   }
 
   patchUser(name, email) {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: 'PATCH',
-      credentials: 'include',
+      method: "PATCH",
+      credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({name, email})
+      body: JSON.stringify({ name, email }),
     }).then((res) => this._getResponseData(res));
   }
 
   getMe() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: 'GET',
+      method: "GET",
       headers: {
         "Access-Control-Expose-Headers": "Set-Cookie",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      credentials: 'include',
-    })
-      .then((res) => this._getResponseData(res));
-  };
+      credentials: "include",
+    }).then((res) => this._getResponseData(res));
+  }
 
-  saveMoive(country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN) {
+  saveMoive(
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    thumbnail,
+    movieId,
+    nameRU,
+    nameEN
+  ) {
     return fetch(`${this._baseUrl}/movies`, {
-      method: 'POST',
+      method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         country: country,
@@ -88,34 +99,32 @@ class MainApi {
         thumbnail: thumbnail || image,
         movieId: movieId,
         nameRU: nameRU,
-        nameEN: nameEN
-      })
+        nameEN: nameEN,
+      }),
     }).then((res) => this._getResponseData(res));
   }
 
   deleteMovie(id) {
     return fetch(`${this._baseUrl}/movies/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getResponseData(res));
   }
 
   getSavedMovies() {
     return fetch(`${this._baseUrl}/movies`, {
-      method: 'GET',
+      method: "GET",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getResponseData(res));
   }
-
-
 }
 
 export const mainApi = new MainApi({
-  baseUrl: 'https://api.movies4all.nomoredomains.xyz'
-})
+  baseUrl: "http://localhost:3001",
+});
